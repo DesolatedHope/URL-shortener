@@ -3,7 +3,7 @@ import swirl from "../../assets/Swirl.svg";
 const Home = () => {
   return (
     <>
-      <img src={swirl} className="-z-50 absolute top-0 left-0 h-full w-full" />
+      {/* <img src={swirl} className="z-50 absolute top-0 left-0 h-full w-full" /> */}
       {/* <img src={cubes} className="-z-20 absolute top-0 left-0" /> */}
 
       <div className="justify-self-center text-center justify-center center content-center w-full pt-[100px] flex flex-col">
@@ -16,6 +16,7 @@ const Home = () => {
           your online experience.
         </p>
         </div>
+        
         <div className="justify-center flex flex-row content-center">
         <input
           className="shadow border-[4px] border-gray-700 rounded-full py-4 w-[600px] py-2 px-3 text-lite-gray bg-dark-gray flex focus:shadow-outline"
@@ -25,7 +26,7 @@ const Home = () => {
         >
         </input>
 
-        <button className="bg-bright-blue h-[50px] mt-[6.5px] w-[150px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full -ml-[157px]">
+        <button className="bg-bright-blue h-[50px] mt-[6.5px] w-[150px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full -ml-[157px] cursor-pointer">
           Shorten Now!
         </button>
         </div>
