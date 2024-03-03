@@ -36,8 +36,10 @@ def redirect():
     data=request.get_json()
     shorturl=data['shortURL']
     results=db.websites.find_one({"shortURL":shorturl})
-    longURL=results['longURL']
-    return jsonify(longURL)
+    if results:
+        longURL=results['longURL']
+        return jsonify(longURL),200
+    return jsonify({"error":"URL Not Found"}),404
 
 @app.route('/api/user/signup',methods=['POST'])
 def signup():
