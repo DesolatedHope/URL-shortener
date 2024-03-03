@@ -19,7 +19,7 @@ def shortenURL():
     longurl=data['longURL']
     results=db.variables.find_one({"_id":"counter"})
     counter=results["counter"]
-    print("CHECK")
+    print(counter)
     shorturl=base10tobase62(counter)
     shorturl="shorty.az/"+shorturl
     db.variables.update_one({"_id":"counter"},{"$inc":{"counter":1}})
