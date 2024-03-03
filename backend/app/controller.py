@@ -19,7 +19,7 @@ def shortenURL():
     longurl=data['longURL']
     results=db.variables.find_one({"_id":"counter"})
     counter=results["counter"]
-    print("CHECK")
+    print(counter)
     shorturl=base10tobase62(counter)
     shorturl="shorty.az/"+shorturl
     db.variables.update_one({"_id":"counter"},{"$inc":{"counter":1}})
@@ -36,8 +36,10 @@ def redirect():
     data=request.get_json()
     shorturl=data['shortURL']
     results=db.websites.find_one({"shortURL":shorturl})
-    longURL=results['longURL']
-    return jsonify(longURL)
+    if results:
+        longURL=results['longURL']
+        return jsonify(longURL),200
+    return jsonify({"error":"URL Not Found"}),404
 
 @app.route('/api/user/signup',methods=['POST'])
 def signup():
