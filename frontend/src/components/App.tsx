@@ -9,7 +9,7 @@ import swirl from "../assets/Swirl.svg";
 function App() {
   return (
     <body className="absolute h-full w-full bg-elite-black">
-      <img src={swirl} className="z-10 absolute top-0 left-0 h-full w-full" />
+      <img src={swirl} className="-z-50 absolute top-0 left-0 h-full w-full" />
       <Navbar />
       <Home />
       <Pricing />
