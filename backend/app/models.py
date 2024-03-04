@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo
 import uuid
 from passlib.hash import pbkdf2_sha256
 
-app.config["MONGO_URI"]="mongodb://localhost:27017/shorty"
+app.config["MONGO_URI"]="mongodb://mongo:46D626gHedBg-6E5CdBfAhb4AGc-E2E5@roundhouse.proxy.rlwy.net:46054/shorty?authSource=admin"
 db=PyMongo(app).db
 
 class User:

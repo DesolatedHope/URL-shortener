@@ -18,15 +18,18 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": true
   },
-  "eslint.workingDirectories": ["./client", "./server"],
+  "eslint.workingDirectories": [
+    "./client", 
+    "./server"
+  ],
   "files.exclude": {
     "**/.git": false,
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

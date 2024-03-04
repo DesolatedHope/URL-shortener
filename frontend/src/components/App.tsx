@@ -1,19 +1,16 @@
 // import { Home } from './components/Home/Home'
+import React from 'react';
 import { Navbar, Home } from ".";
-import { Pricing } from "./Pricing/Pricing";
-import swirl from "../assets/Swirl.svg";
-
 // import cubes from "./assets/Cubes.svg";
 // import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
+  // const kalidas = true;
   return (
-    <body className="absolute h-full w-full bg-elite-black">
-      <img src={swirl} className="-z-50 absolute top-0 left-0 h-full w-full" />
+    <div className="absolute h-full w-full bg-elite-black -z-40">
       <Navbar />
       <Home />
-      <Pricing />
-    </body>
+    </div>
   );
 }
 
