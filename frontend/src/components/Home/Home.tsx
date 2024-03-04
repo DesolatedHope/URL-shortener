@@ -1,6 +1,30 @@
 import swirl from "../../assets/Swirl.svg";
+import { useState } from "react";
+import instance from '../../axios.js'
 
 const Home = () => {
+
+  const [longURL,setLongURL] = useState("");
+  const [shortURL,setShortURL] = useState("");
+
+  const handleSubmit = () => {
+    console.log("hello")
+    console.log(longURL);
+    const getShortURL = async () => {
+      const response = await instance.post('/api/getShortURL', {
+        longURL: longURL
+      },
+      {
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      }
+      )
+      setShortURL(response.data.shortURL);
+    }
+    getShortURL();
+  }
+
   return (
     <>
       {/* <img src={swirl} className="z-50 absolute top-0 left-0 h-full w-full" /> */}
@@ -23,13 +47,19 @@ const Home = () => {
           id="username"
           type="text"
           placeholder="Enter the link here"
+          value={longURL}
+          onChange={(e) => setLongURL(e.target.value)}
         >
         </input>
 
-        <button className="bg-bright-blue h-[50px] mt-[6.5px] w-[150px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full -ml-[157px] cursor-pointer">
+        <button
+          className="bg-bright-blue h-[50px] mt-[6.5px] w-[150px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full -ml-[157px] cursor-pointer"
+          onClick={()=> handleSubmit()}
+        >
           Shorten Now!
         </button>
         </div>
+        {shortURL && <p style={{color:"white"}}>{shortURL}</p>}
       </div>
     </>
   );
