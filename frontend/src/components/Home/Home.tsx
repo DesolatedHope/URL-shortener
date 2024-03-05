@@ -1,6 +1,11 @@
+import swirl from "../../assets/Swirl.svg";
+import { useState } from "react";
+import instance from '../../axios.js'
+import Features from "../Features/Features";
+import Pricing from "../Pricing/Pricing";
 import { Navbar, WelcomePage } from "../index";
 import { TanStackTable } from '../index';
-import Input from './Input'
+import Input from './Input.tsx'
 const Home = () => {
 
   const auth = true;
