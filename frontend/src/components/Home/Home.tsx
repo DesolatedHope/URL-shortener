@@ -1,4 +1,6 @@
 import swirl from "../../assets/Swirl.svg";
+import Features from "../Features/Features";
+import Pricing from "../Pricing/Pricing";
 import { Navbar, WelcomePage } from "../index";
 import { TanStackTable } from '../index';
 const Home = () => {
@@ -12,7 +14,7 @@ const Home = () => {
           className="-z-50 absolute top-0 left-0 h-full w-full"
         /> */}
         {/* <img src={cubes} className="-z-20 absolute top-0 left-0" /> */}
-        <div className="pt-4 min-h-screen bg-gray-900">
+        <div className="pt-4 min-h-screen bg-elite-black">
           <TanStackTable />
         </div>
       </>
@@ -20,7 +22,7 @@ const Home = () => {
   } else {
     return (
       <>
-        <Navbar />
+        {/* <Navbar /> */}
         {/* <img
           src={swirl}
           className="-z-50 absolute top-0 left-0 h-full w-full"

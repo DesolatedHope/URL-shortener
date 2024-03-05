@@ -6,7 +6,7 @@ const Navbar = () => {
   const auth = true;
   if (auth) {
     return (
-      <div className="p-4 flex items-center justify-between bg-slate-50">
+      <div className="sticky top-0 z-50 p-4 flex items-center justify-between bg-elite-black">
         {/* Logo on the left side */}
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="mr-2" />

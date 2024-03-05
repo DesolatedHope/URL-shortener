@@ -47,7 +47,7 @@ const TanStackTable = () => {
           <div className="w-40 truncate">https://loremflick.com</div>
         </>
       ),
-      header: "Shorten Link",
+      header: "Short Link",
     }),
     columnHelper.accessor("age", {
       cell: (info) => <span>{info.getValue()}</span>,
@@ -103,7 +103,7 @@ const TanStackTable = () => {
         <DownloadBtn data={data} fileName={"peoples"} />
       </div>
       <table className="border border-gray-700 w-full text-left">
-        <thead className="bg-indigo-600">
+        <thead className="bg-orange-500">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -185,10 +185,10 @@ const TanStackTable = () => {
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));
           }}
-          className="p-2 bg-transparent"
+          className="p-2 bg-gray-400 text-elite-black"
         >
           {[10, 20, 30, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
+            <option key={pageSize} value={pageSize} className="text-elite-black">
               Show {pageSize}
             </option>
           ))}

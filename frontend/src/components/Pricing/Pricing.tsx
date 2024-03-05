@@ -1,38 +1,104 @@
-import { PriceCard } from '../PriceCard/PriceCard'
 
-export const Pricing = () => {
-  return (
-    <div className='flex flex-col items-center bg-elite-black p-4 -z-50'>
-        <div className="mb-2 mt-12 text-center z-50">
-            <h1 className="mb-4 text-[50px] bg-gradient-to-r from-bright-blue to-bright-pink text-transparent bg-clip-text font-bold">Pricing</h1>
-            <p className="text-[15px] text-lite-gray">Choose the right price for your needs</p>
 
-        </div>
-        <div className="flex flex-col gap-8 p-10 xl:flex-row z-50">
-            <PriceCard
-                color="bg-lite-gray"
-                name = "Basic"
-                description="Get started with the basic plan"
-                features={["1 User", "Upto 20 Free Links", "Analytics"]}
-                btnText="Start Free Plan"
-            />
-            <PriceCard
-                color="bg-lite-gray"
-                name = "Pro"
-                price= "5"
-                description="Get started with an advanced plan"
-                features={["Upto 5 users", "Enjoy upto 200 Short URLs", "Custom Short Links", "Everything in the Basic Plan"]}
-                btnText="Start Pro Plan"
-            />
-            <PriceCard
-                color="bg-lite-gray"
-                name = "Enterprise"
-                price="20"
-                description="For big businesses"
-                features={["Unlimited Users", "Unlimited Short URLs", "Custom Short Links", "Everything in the Pro plan"]}
-                btnText="Start Enterprise Plan"
-            />
-        </div>
-    </div>
-  )
-}
+export default () => {
+
+    const plans = [
+        {
+            name: "Basic",
+            price: 0,
+            features: [
+                "Curabitur faucibus",
+                "massa ut pretium maximus",
+                "Sed posuere nisi",
+                "Pellentesque eu nibh et neque",
+                "Suspendisse a leo",
+                "Praesent quis venenatis ipsum",
+                "Duis non diam vel tortor",
+
+            ],
+        },
+        {
+            name: "Professional",
+            price: 15,
+            features: [
+                "Curabitur faucibus",
+                "massa ut pretium maximus",
+                "Sed posuere nisi",
+                "Pellentesque eu nibh et neque",
+                "Suspendisse a leo",
+                "Praesent quis venenatis ipsum",
+                "Duis non diam vel tortor",
+            ],
+        },
+        {
+            name: "Enterprise",
+            price: 40,
+            features: [
+                "Curabitur faucibus",
+                "massa ut pretium maximus",
+                "Sed posuere nisi",
+                "Pellentesque eu nibh et neque",
+                "Suspendisse a leo",
+                "Praesent quis venenatis ipsum",
+                "Duis non diam vel tortor",
+            ],
+        },
+    ];
+
+    return (
+        <section className='py-14'>
+            <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+                <div className='relative max-w-xl mx-auto sm:text-center'>
+                    <h3 className='text-gray-800 text-3xl font-semibold sm:text-4xl'>
+                        Pricing for everyone!
+                    </h3>
+                    <div className='mt-3 max-w-xl'>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur consequat nunc.
+                        </p>
+                    </div>
+                </div>
+                <div className='mt-16 space-y-6 justify-center gap-6 sm:grid sm:grid-cols-2 sm:space-y-0 lg:grid-cols-3'>
+                    {
+                        plans.map((item, idx) => (
+                            <div key={idx} className='relative flex-1 flex items-stretch flex-col p-8 rounded-xl border-2'>
+                                <div>
+                                    <span className='text-indigo-600 font-medium'>
+                                        {item.name}
+                                    </span>
+                                    <div className='mt-4 text-gray-800 text-3xl font-semibold'>
+                                        ${item.price} <span className="text-xl text-gray-600 font-normal">/mo</span>
+                                    </div>
+                                </div>
+                                <ul className='py-8 space-y-3'>
+                                    {
+                                        item.features.map((featureItem, idx) => (
+                                            <li key={idx} className='flex items-center gap-5'>
+                                                <svg
+                                                    xmlns='http://www.w3.org/2000/svg'
+                                                    className='h-5 w-5 text-indigo-600'
+                                                    viewBox='0 0 20 20'
+                                                    fill='currentColor'>
+                                                    <path
+                                                        fill-rule='evenodd'
+                                                        d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                                                        clip-rule='evenodd'></path>
+                                                </svg>
+                                                {featureItem}
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+                                <div className="flex-1 flex items-end">
+                                    <button className='px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700'>
+                                        Get Started
+                                    </button>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    );
+};
