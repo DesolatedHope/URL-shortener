@@ -13,13 +13,8 @@ const Home = () => {
     return (
       <>
         <Navbar />
-        <Input />
-        {/* <img
-          src={swirl}
-          className="-z-50 absolute top-0 left-0 h-full w-full"
-        /> */}
-        {/* <img src={cubes} className="-z-20 absolute top-0 left-0" /> */}
         <div className="pt-4 min-h-screen bg-elite-black">
+          <Input />
           <TanStackTable />
         </div>
       </>
@@ -27,12 +22,6 @@ const Home = () => {
   } else {
     return (
       <>
-        {/* <Navbar /> */}
-        {/* <img
-          src={swirl}
-          className="-z-50 absolute top-0 left-0 h-full w-full"
-        /> */}
-        {/* <img src={cubes} className="-z-20 absolute top-0 left-0" /> */}
         <WelcomePage />
       </>
     );
