@@ -30,7 +30,7 @@ export default () => {
             <a href="javascript:void(0)">
                 <img
                     src={logo}
-                    className="pt-[10px]"
+                    className="pt-[10px] h-[95px] w-[150px]"
                     alt="Shorty-URL logo"
                 />
             </a>

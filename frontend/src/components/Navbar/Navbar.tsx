@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className="sticky top-0 z-50 p-4 flex items-center justify-between bg-elite-black">
       {/* Logo on the left side */}
       <div className="flex items-center">
-        <img src={logo} alt="Logo" className="mr-2" />
+        <img src={logo} alt="Logo" className="mr-2 h-[95px] w-[150px]" />
       </div>
 
       {/* <Input /> */}
