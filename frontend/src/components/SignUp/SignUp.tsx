@@ -1,8 +1,9 @@
+import React from 'react';
 import logo from '../../assets/Logo.svg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import instance from '../../axios.js'
-import { useStateValue } from '../../MyContexts/StateProvider.jsx';
+import instance from '../../axios'
+import { useStateValue } from '../../MyContexts/StateProvider';
 
 export default () => {
 
