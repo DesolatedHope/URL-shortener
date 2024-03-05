@@ -1,11 +1,10 @@
+import { React } from 'react';
 import { useState, useEffect } from "react";
 import logo from '../../assets/Logo.svg';
 import Features from "../Features/Features";
 import Pricing from "../Pricing/Pricing";
 import CTA from "../CTA/CTA";
 import Footer from "../Footer/Footer";
-import stars from '../../assets/Stars.svg';
-import Stats from "../Stats/Stats";
 import Input from "../Home/Input";
 
 export default () => {
@@ -17,20 +16,12 @@ export default () => {
         { title: "Pricing", path: "/#Pricing" }
     ]
 
-    // useEffect(() => {
-    //     document.onclick = (e) => {
-    //         const target = e.target;
-    //         if (!target.closest(".menu-btn")) setState(false);
-    //     };
-    // }, [])
-
-
     const Brand = () => (
         <div className="flex items-center justify-between py-5 md:block">
             <a href="javascript:void(0)">
                 <img
                     src={logo}
-                    className="pt-[10px]"
+                    className="pt-[10px] h-[100px] w-[150px]"
                     alt="Shorty-URL logo"
                 />
             </a>
@@ -86,9 +77,6 @@ export default () => {
                             <li>
                                 <a href="/LogIn" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-sky-500 hover:bg-sky-400 active:bg-sky-600 duration-150 rounded-full md:inline-flex">
                                     Log In
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                                        <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-                                    </svg>
                                 </a>
                             </li>
                             </ul>

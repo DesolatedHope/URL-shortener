@@ -1,4 +1,5 @@
-import logo from '../../assets/Logo.svg';
+import logo from '../../assets/LogoBlack.svg';
+import React from 'react';
 
 export default () => {
 
