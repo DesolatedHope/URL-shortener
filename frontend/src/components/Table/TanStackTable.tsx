@@ -24,7 +24,7 @@ const TanStackTable = () => {
     columnHelper.accessor("profile", {
       cell: (info) => (
         <>
-          <div className="w-40 truncate">{info.getValue()}</div>
+          <div className="w-40 truncate"><a href={info.getValue()}>{info.getValue()}</a></div>
         </>
       ),
       header: "Original Link",
@@ -44,7 +44,7 @@ const TanStackTable = () => {
     columnHelper.accessor("profile", {
       cell: () => (
         <>
-          <div className="w-40 truncate">https://loremflick.com</div>
+          <div className="w-40 truncate"><a href="https://loremflick.com">https://loremflick.com</a></div>
         </>
       ),
       header: "Short Link",
@@ -102,6 +102,7 @@ const TanStackTable = () => {
         </div>
         <DownloadBtn data={data} fileName={"peoples"} />
       </div>
+
       <table className="border border-gray-700 w-full text-left">
         <thead className="bg-orange-500">
           {table.getHeaderGroups().map((headerGroup) => (
@@ -117,6 +118,7 @@ const TanStackTable = () => {
             </tr>
           ))}
         </thead>
+
         <tbody>
           {table.getRowModel().rows.length ? (
             table.getRowModel().rows.map((row, i) => (
@@ -140,7 +142,7 @@ const TanStackTable = () => {
           )}
         </tbody>
       </table>
-      {/* pagination */}
+      
       <div className="flex items-center justify-end mt-2 gap-2">
         <button
           onClick={() => {

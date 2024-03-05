@@ -10,7 +10,7 @@ const Input = () => {
         type="text"
         placeholder="Enter your link here"
       />
-      <button onClick={() => (navigate('/LogIn'))} className="bg-sky-500 h-[50px] w-[150px] hover:bg-sky-400 text-white font-bold py-2 px-4 rounded-full -ml-[168px] active:bg-sky-600 duration-150">
+      <button onClick={() => (navigate('/LogIn'))} className="bg-violet-500 h-[50px] w-[150px] hover:bg-violet-600 text-white font-bold py-2 px-4 rounded-full -ml-[168px] active:bg-violet-700 duration-150">
         Shorten Now!
       </button>
     </form>
