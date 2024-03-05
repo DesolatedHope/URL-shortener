@@ -6,7 +6,7 @@ import CTA from "../CTA/CTA";
 import Footer from "../Footer/Footer";
 import stars from '../../assets/Stars.svg';
 import Stats from "../Stats/Stats";
-import Input from "../Home/Input";
+import Input from "../Input/Input";
 
 export default () => {
 
