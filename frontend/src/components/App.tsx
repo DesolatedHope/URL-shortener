@@ -1,14 +1,23 @@
 // import { Home } from './components/Home/Home'
-import { ReactDOM } from "react";
+import { useEffect } from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import { Navbar, Home } from ".";
+import { Home } from ".";
 import SignUp from './SignUp/SignUp';
 import Login from "./LogIn/LogIn";
 // import cubes from "./assets/Cubes.svg";
 // import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import { useStateValue } from "../MyContexts/StateProvider.jsx";
 
 function App() {
-  // const kalidas = true;
+
+  const [{token}, dispatch] = useStateValue();
+  
+  useEffect(()=>{
+    dispatch({
+      type: "INITIALIZE_TOKEN",
+    })
+  },[token])
+
   return (
     <BrowserRouter>
       <Routes >

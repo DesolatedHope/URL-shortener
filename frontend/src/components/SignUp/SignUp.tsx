@@ -1,6 +1,39 @@
 import logo from '../../assets/Logo.svg';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import instance from '../../axios.js'
+import { useStateValue } from '../../MyContexts/StateProvider.jsx';
 
 export default () => {
+
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('');
+
+    const [{},dispatch]=useStateValue();
+
+    const navigate=useNavigate();
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        const signup=async()=>{
+            const response=await instance.post('/api/signup',{
+                email:email,
+                password:password
+            },
+            {
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            })
+            dispatch({
+                type:'SET_TOKEN',
+                token:response.data.token
+            })
+        }
+        signup();
+        navigate('/');
+    }
+
     return (
         <main className="w-full flex">
             <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
@@ -35,7 +68,7 @@ export default () => {
             <div className="flex-1 flex items-center justify-center h-screen">
                 <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
                     <div className="">
-                        <img src="https://floatui.com/logo.svg" width={150} className="lg:hidden" />
+                        {/* <img src="https://floatui.com/logo.svg" width={150} className="lg:hidden" /> */}
                         <div className="mt-5 space-y-2">
                             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Sign up</h3>
                             <p className="">Already have an account? <a href="/LogIn" className="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
@@ -69,7 +102,7 @@ export default () => {
                         onSubmit={(e) => e.preventDefault()}
                         className="space-y-5"
                     >
-                        <div>
+                        {/* <div>
                             <label className="font-medium">
                                 Name
                             </label>
@@ -77,8 +110,9 @@ export default () => {
                                 type="text"
                                 required
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                value={}
                             />
-                        </div>
+                        </div> */}
                         <div>
                             <label className="font-medium">
                                 Email
@@ -87,6 +121,8 @@ export default () => {
                                 type="email"
                                 required
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                value={email}
+                                onChange={(e)=>setEmail(e.target.value)}
                             />
                         </div>
                         <div>
@@ -97,10 +133,13 @@ export default () => {
                                 type="password"
                                 required
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                value={password}
+                                onChange={(e)=>setPassword(e.target.value)}
                             />
                         </div>
                         <button
                             className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+                            onClick={(e)=>handleSubmit(e)}
                         >
                             Create account
                         </button>
