@@ -4,7 +4,7 @@ import Pricing from "../Pricing/Pricing";
 import { Navbar, WelcomePage } from "../index";
 import { TanStackTable } from '../index';
 const Home = () => {
-  const auth = true;
+  const auth = false;
   if (auth) {
     return (
       <>

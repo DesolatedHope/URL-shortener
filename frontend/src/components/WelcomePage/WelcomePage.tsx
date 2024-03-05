@@ -5,15 +5,16 @@ import Pricing from "../Pricing/Pricing";
 import CTA from "../CTA/CTA";
 import Footer from "../Footer/Footer";
 import stars from '../../assets/Stars.svg';
+import Stats from "../Stats/Stats";
+import Input from "../Input/Input";
 
 export default () => {
 
     const [state, setState] = useState(false)
 
-    // Replace javascript:void(0) paths with your paths
     const navigation = [
-        { title: "Features", path: "javascript:void(0)" },
-        { title: "Pricing", path: "javascript:void(0)" }
+        { title: "Features", path: "/#Features" },
+        { title: "Pricing", path: "/#Pricing" }
     ]
 
     useEffect(() => {
@@ -29,8 +30,6 @@ export default () => {
             <a href="javascript:void(0)">
                 <img
                     src={logo}
-                    // width={120}
-                    // height={50}
                     className="pt-[10px]"
                     alt="Shorty-URL logo"
                 />
@@ -56,8 +55,8 @@ export default () => {
     )
 
     return (
-      <>
-        <div className="bg-gray-900">
+      <div className="">
+        <div className="bg-elite-black h-screen">
             <header>
                 <div className={`md:hidden ${state ? "mx-2 pb-5" : "hidden"}`}>
                     <Brand />
@@ -78,14 +77,20 @@ export default () => {
                                         )
                                     })
                                 }
-                                <li>
-                                    <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-sky-500 hover:bg-sky-400 active:bg-sky-600 duration-150 rounded-full md:inline-flex">
-                                        Get started
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                                            <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-                                        </svg>
-                                    </a>
-                                </li>
+                                
+                                <li className="mt-4 lg:mt-0">
+                                <a href="/SignUp" className="flex items-center py-3 px-4 text-center border text-white hover:text-sky-600 rounded-md block lg:inline lg:border-0">
+                                    Sign Up
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/LogIn" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-sky-500 hover:bg-sky-400 active:bg-sky-600 duration-150 rounded-full md:inline-flex">
+                                    Log In
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                                        <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
                             </ul>
                         </div>
                     </div>
@@ -100,31 +105,22 @@ export default () => {
                         <p className="max-w-2xl mx-auto text-gray-400">
                         An efficient and easy-to-use URL Shortening service that streamlines your online experience.
                         </p>
-                        <form
-                            onSubmit={(e) => e.preventDefault()}
-                            className="justify-center items-center gap-x-3 sm:flex">
-                            <input
-                                type="text"
-                                placeholder="Enter your link"
-                                className="w-full px-3 py-2.5 text-gray-400 bg-gray-700 focus:bg-gray-900 duration-150 outline-none rounded-lg shadow sm:max-w-sm sm:w-auto"
-                            />
-                            <button className="flex items-center justify-center gap-x-2 py-2.5 px-4 mt-3 w-full text-sm text-white font-medium bg-sky-500 hover:bg-sky-400 active:bg-sky-600 duration-150 rounded-lg sm:mt-0 sm:w-auto">
-                                Shorten Now
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                                    <path fillRule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clipRule="evenodd" />
-                                </svg>
-                            </button>
-                        </form>
+                        <div className="py-28">
+                        <Input />
+                        </div>
                         
                     </div>
                 </div>
+
                 <div className="absolute inset-0 m-auto max-w-xs h-[357px] blur-[118px] sm:max-w-md md:max-w-lg" style={{ background: "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11) 15.73%, rgba(14, 165, 233, 0.41) 15.74%, rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4) 115.91%)" }}></div>
+            
             </section>
+            {/* <Stats /> */}
         </div>
         <Features />
         <Pricing />
         <CTA />
         <Footer />
-        </>
+        </div>
     )
 }

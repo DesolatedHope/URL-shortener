@@ -1,9 +1,11 @@
+import logo from '../../assets/Logo.svg';
+
 export default () => {
     return (
         <main className="w-full flex">
             <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
                 <div className="relative z-10 w-full max-w-md">
-                    {/* <img src="https://floatui.com/logo-dark.svg" width={150} /> */}
+                    <img src={logo} />
                     <div className=" mt-16 space-y-3">
                         <h3 className="text-white text-3xl font-bold">Shorten all your links in a jiffy!</h3>
                         <p className="text-gray-300">
@@ -36,7 +38,7 @@ export default () => {
                         <img src="https://floatui.com/logo.svg" width={150} className="lg:hidden" />
                         <div className="mt-5 space-y-2">
                             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Sign up</h3>
-                            <p className="">Already have an account? <a href="javascript:void(0)" className="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
+                            <p className="">Already have an account? <a href="/LogIn" className="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
                         </div>
                     </div>
 
