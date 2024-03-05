@@ -27,7 +27,7 @@ export default () => {
             })
             dispatch({
                 type:'SET_TOKEN',
-                token:response.data.token
+                token:response.data.access_token
             })
         }
         signup();

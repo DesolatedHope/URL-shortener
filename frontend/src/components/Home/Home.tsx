@@ -11,7 +11,7 @@ import { useStateValue} from '../../MyContexts/StateProvider.jsx';
 const Home = () => {
 
   const [{token},dispatch]=useStateValue();
-  if (token!=null && token!="null") {
+  if (token!=null && token!="null" && token!=undefined && token!='undefined') {
     return (
       <>
         <Navbar />

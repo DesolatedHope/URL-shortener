@@ -13,26 +13,28 @@ export default () => {
 
     const navigate=useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const login = async () => {
-            const response=await instance.post('/api/createToken',{
+    
+        try {
+            const response = await instance.post('/api/createToken', {
                 email: email,
-                password:password
+                password: password
             },
             {
-                headers:{
+                headers: {
                     'Content-Type': 'application/json'
                 }
-            })
+            });
             dispatch({
-                type:'SET_TOKEN',
-                token:response.data.token
-            })
+                type: 'SET_TOKEN',
+                token: response.data.access_token
+            });
+            navigate('/');
+        } catch (error) {
+            console.error("Error logging in:", error);
         }
-        login();
-        navigate('/');
-    }
+    };
 
     return (
         <main className="w-full h-screen flex flex-col items-center justify-center px-4">
