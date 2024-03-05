@@ -1,5 +1,4 @@
 import React from "react";
-import { Input } from "../index";
 import logo from "../../assets/Logo.svg";
 
 const Navbar = () => {
@@ -13,7 +12,7 @@ const Navbar = () => {
         </div>
 
         {/* Input Component in the center */}
-        <Input />
+        {/* <Input /> */}
 
         {/* Buttons on the right side */}
         <div className="flex items-center">
