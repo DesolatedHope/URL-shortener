@@ -17,12 +17,12 @@ export default () => {
         { title: "Pricing", path: "/#Pricing" }
     ]
 
-    useEffect(() => {
-        document.onclick = (e) => {
-            const target = e.target;
-            if (!target.closest(".menu-btn")) setState(false);
-        };
-    }, [])
+    // useEffect(() => {
+    //     document.onclick = (e) => {
+    //         const target = e.target;
+    //         if (!target.closest(".menu-btn")) setState(false);
+    //     };
+    // }, [])
 
 
     const Brand = () => (

@@ -1,10 +1,34 @@
 import swirl from "../../assets/Swirl.svg";
+import { useState } from "react";
+import instance from '../../axios.js'
 import Features from "../Features/Features";
 import Pricing from "../Pricing/Pricing";
 import { Navbar, WelcomePage } from "../index";
 import { TanStackTable } from '../index';
 const Home = () => {
-  const auth = false;
+
+  const [longURL,setLongURL] = useState("");
+  const [shortURL,setShortURL] = useState("");
+
+  const handleSubmit = () => {
+    console.log("hello")
+    console.log(longURL);
+    const getShortURL = async () => {
+      const response = await instance.post('/api/getShortURL', {
+        longURL: longURL
+      },
+      {
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      }
+      )
+      setShortURL(response.data.shortURL);
+    }
+    getShortURL();
+  }
+
+  const auth = true;
   if (auth) {
     return (
       <>
