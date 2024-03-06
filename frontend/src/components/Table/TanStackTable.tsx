@@ -7,12 +7,14 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import React from "react";
-import { USERS } from "../data";
+// import { USERS } from "../data";
 import { useState, useEffect } from "react";
 import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
 import { SearchIcon } from "../Icons/Icons";
 import { useStateValue } from "../../MyContexts/StateProvider";
+import Modal from "../Modal/Modal";
+import { useNavigate } from 'react-router-dom';
 
 const TanStackTable = ({ data }) => {
   const [copyState, setCopyState] = useState(false);
@@ -31,10 +33,33 @@ const TanStackTable = ({ data }) => {
     );
   }
   
+
+  const navigate=useNavigate();
+
   const columnHelper = createColumnHelper();
-  
   const [{ tableData }, dispatch] = useStateValue();
-  
+  const [showModal, setShowModal] = useState(false);
+  const [url, setUrl] = useState("");
+
+  const handleRedirect=(link)=>{
+    if (link.startsWith('http://') || link.startsWith('https://')){
+      window.open(link,'_blank');
+    }
+    else{
+      link='https://'+link;
+      window.open(link,'_blank');
+    }
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleOpenModal = (urlValue) => {
+    setUrl(urlValue);
+    setShowModal(true);
+  };
+
   const columns = [
     columnHelper.accessor("", {
       id: "S.No",
@@ -57,10 +82,13 @@ const TanStackTable = ({ data }) => {
           <img
             src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
             alt="..."
-            className="w-10 h-10 object-cover justify-self-center"
-            onClick={
-                () => {handleClick(info.getValue())}
-            }
+            className="w-10 h-10 object-cover justify-self-center hover:cursor-pointer"
+            onClick={() => handleOpenModal(info.getValue())}
+          />
+          <Modal
+            show={showModal}
+            onClose={handleCloseModal}
+            value={url}
           />
         </>
       ),
@@ -68,7 +96,9 @@ const TanStackTable = ({ data }) => {
     }),
     columnHelper.accessor("shortURL", {
       cell: (info) => (
-        <div className="w-40 truncate">{info.getValue()}</div>
+        <>
+          <button onClick={()=>{handleRedirect(info.getValue())}}>{info.getValue()}</button>
+        </>
       ),
       header: "Short Link",
     }),
@@ -128,22 +158,22 @@ const TanStackTable = ({ data }) => {
 
         const handleStatusChange = (status) => {
           // Handle status change logic here
-          console.log(`Changing status of ${rowId} to ${status}`);
+          // console.log(`Changing status of ${rowId} to ${status}`);
         };
 
         const handleDelete = () => {
           // Handle delete logic here
-          console.log(`Deleting ${rowId}`);
+          // console.log(`Deleting ${rowId}`);
         };
 
         return (
           <div className="relative">
             <button
-              className="text-gray-500 hover:text-gray-700"
+              className={isActive ? 'text-green-600' : 'text-red-600' }
               id={`dropdown-${rowId}`}
               data-dropdown-toggle={`dropdown-${rowId}`}
             >
-              {isActive ? "Active" : "Not Active"}
+              {isActive ? "Active" : "Inactive"}
             </button>
             <div
               id={`dropdown-menu-${rowId}`}
