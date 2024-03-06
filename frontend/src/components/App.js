@@ -10,7 +10,7 @@ import Login from "./LogIn/LogIn";
 // import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { useStateValue } from "../MyContexts/StateProvider.jsx";
 import PageNotFound from './PageNotFound/PageNotFound.js';
-import Analytics from './Analytics/Analytics';
+// import Analytics from './Analytics/Analytics';
 function App() {
     const [{ token }, dispatch] = useStateValue();
     useEffect(() => {
@@ -24,6 +24,7 @@ function App() {
             React.createElement(Route, { path: "LogIn", element: React.createElement(Login, null) }),
             React.createElement(Route, { path: "SignUp", element: React.createElement(SignUp, null) }),
             React.createElement(Route, { path: "*", element: React.createElement(PageNotFound, null) }),
-            React.createElement(Route, { path: "analytics", element: React.createElement(Analytics, null) }))));
+            // React.createElement(Route, { path: "analytics", element: React.createElement(Analytics, null) })
+            )));
 }
 export default App;

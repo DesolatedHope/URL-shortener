@@ -2,7 +2,7 @@
 import React from 'react';
 {/* @ts-ignore*/}
 import ReactDOM from 'react-dom/client';
-import App from './components/App.js';
+import App from './components/App';
 import './index.css';
 import reducer, { initialState } from './MyContexts/reducer';
 import { StateProvider } from './MyContexts/StateProvider';

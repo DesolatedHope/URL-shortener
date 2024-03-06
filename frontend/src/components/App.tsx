@@ -10,7 +10,7 @@ import Login from "./LogIn/LogIn";
 // import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { useStateValue } from "../MyContexts/StateProvider.jsx";
 import PageNotFound from './PageNotFound/PageNotFound.js';
-import Analytics from './Analytics/Analytics';
+// import Analytics from './Analytics/Analytics';
 
 function App() {
 
@@ -29,7 +29,7 @@ function App() {
         <Route path="LogIn" element={<Login />} /> 
         <Route path="SignUp" element={<SignUp />} />
         <Route path="*" element={<PageNotFound/>} />
-        <Route path="analytics" element={<Analytics/>} />
+        {/* <Route path="analytics" element={<Analytics/>} /> */}
       </Routes>
     </BrowserRouter>
   );
