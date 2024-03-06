@@ -1,3 +1,4 @@
+import React from 'react';
 export default () => {
     return (
         <section className="relative overflow-hidden py-28 px-4 bg-gray-900 md:px-8">

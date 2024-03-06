@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
+import Navbar2 from "../Navbar2/Navbar2";
 import { useState, useEffect } from "react";
 import { useStateValue } from "../../MyContexts/StateProvider";
 import instance from "../../axios";
@@ -26,7 +26,7 @@ const Analytics = () => {
   }, [token]);
   return (
     <div className="bg-elite-black text-white min-h-screen">
-      <Navbar />
+      <Navbar2 />
 
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-center text-5xl font-bold mb-12">Analytics</h2>
