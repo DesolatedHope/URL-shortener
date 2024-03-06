@@ -11,9 +11,12 @@ import { useState } from "react";
 import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
 import { SearchIcon } from "../Icons/Icons";
+import { useStateValue } from "../../MyContexts/StateProvider";
 
-const TanStackTable = () => {
+const TanStackTable = ({data}) => {
   const columnHelper = createColumnHelper();
+
+  const [{ tableData }, dispatch] = useStateValue();
 
   const columns = [
     columnHelper.accessor("", {
@@ -21,7 +24,7 @@ const TanStackTable = () => {
       cell: (info) => <span>{info.row.index + 1}</span>,
       header: "S.No",
     }),
-    columnHelper.accessor("profile", {
+    columnHelper.accessor("longURL", {
       cell: (info) => (
         <>
           <div className="w-40 truncate"><a href={info.getValue()}>{info.getValue()}</a></div>
@@ -29,52 +32,53 @@ const TanStackTable = () => {
       ),
       header: "Original Link",
     }),
-    columnHelper.accessor("profile", {
-      cell: () => (
+    // columnHelper.accessor("profile", {
+    //   cell: () => (
+    //     <>
+    //       <img
+    //         src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
+    //         alt="..."
+    //         className="w-10 h-10 object-cover justify-self-center"
+    //       />
+    //     </>
+    //   ),
+    //   header: "QR Code",
+    // }),
+    columnHelper.accessor("shortURL", {
+      cell: (info) => (
         <>
-          <img
-            src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
-            alt="..."
-            className="w-10 h-10 object-cover justify-self-center"
-          />
-        </>
-      ),
-      header: "QR Code",
-    }),
-    columnHelper.accessor("profile", {
-      cell: () => (
-        <>
-          <div className="w-40 truncate"><a href="https://loremflick.com">https://loremflick.com</a></div>
+          <div className="w-40 truncate">{info.getValue()}</div>
+
         </>
       ),
       header: "Short Link",
     }),
-    columnHelper.accessor("age", {
+    columnHelper.accessor("clicks", {
       cell: (info) => <span>{info.getValue()}</span>,
       header: "Clicks",
     }),
-    columnHelper.accessor("profile", {
-      cell: (info) => (
-        <>
-          <img
-            src={info.getValue()}
-            alt="..."
-            className="rounded-full w-10 h-10 object-cover"
-          />
-        </>
-      ),
-      header: "Author",
-    }),
-    columnHelper.accessor("date", {
-      cell: (info) => <span >25-12-2021</span>,
+    // columnHelper.accessor("email", {
+    //   cell: (info) => (
+    //     <>
+    //       <img
+    //         src={info.getValue()}
+    //         alt="..."
+    //         className="rounded-full w-10 h-10 object-cover"
+    //       />
+    //     </>
+    //   ),
+    //   header: "Author",
+    // }),
+    columnHelper.accessor("createdAt", {
+      cell: (info) => <span >{info.getValue()}</span>,
       header: "Date Created",
     }),
-    columnHelper.accessor("progress", {
+    columnHelper.accessor("isActive", {
       cell: () => <span className="text-green-500">Active</span>,
       header: "Status",
     }),
   ];
-  const [data] = useState(() => [...USERS]);
+  // const [data] = useState(() => [...USERS]);
   const [globalFilter, setGlobalFilter] = useState("");
 
   const table = useReactTable({

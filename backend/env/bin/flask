@@ -1,4 +1,4 @@
-#!/Users/himdyutisandilya/Projects/URL-Shortener/backend/env/bin/python3
+#!/Users/himdyutisandilya/Projects/URL-Shortener/backend/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

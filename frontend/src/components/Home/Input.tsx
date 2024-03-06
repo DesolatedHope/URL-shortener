@@ -19,18 +19,16 @@ const Input = () => {
     e.preventDefault();
     console.log(longURL);
     const getShortURL = async () => {
-      const response = await instance.post(
-        "/api/getShortURL",
-        {
-          longURL: longURL,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+      const response = await instance.post('/api/getShortURL', {
+        longURL: longURL
+      },
+      {
+        headers:{
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
         }
-      );
+      }
+      )
       setShortURL(response.data.shortURL);
     };
     getShortURL();
