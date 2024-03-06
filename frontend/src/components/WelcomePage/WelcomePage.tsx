@@ -19,6 +19,7 @@ export default () => {
         { title: "Pricing", path: "/#Pricing" }
     ]
 
+
     const Brand = () => (
         <div className="flex items-center justify-between py-5 md:block">
             <a href="javascript:void(0)">
@@ -49,7 +50,7 @@ export default () => {
     )
 
     return (
-      <div className="">
+      <div className="scroll-smooth">
         <div className="bg-elite-black h-screen">
             <header>
                 <div className={`md:hidden ${state ? "mx-2 pb-5" : "hidden"}`}>
