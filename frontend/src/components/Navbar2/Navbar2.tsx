@@ -1,11 +1,10 @@
-{/* @ts-ignore*/}
 import React from "react";
 import logo from "../../assets/Logo.svg";
 import { useStateValue } from "../../MyContexts/StateProvider";
 import instance from "../../axios";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar2 = () => {
   const [{ token, premium }, dispatch] = useStateValue();
 
   const navigate = useNavigate();
@@ -69,10 +68,10 @@ const Navbar = () => {
             </button>
           )}
         <button
-          onClick={() => navigate('/analytics')}
+          onClick={() => navigate('/')}
           className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
         >
-          Analytics
+          Dashboard
         </button>
         <button
           onClick={() => handleClick()}
@@ -85,4 +84,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar2;
