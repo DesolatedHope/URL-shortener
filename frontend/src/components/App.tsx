@@ -8,6 +8,7 @@ import Login from "./LogIn/LogIn";
 // import cubes from "./assets/Cubes.svg";
 // import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { useStateValue } from "../MyContexts/StateProvider.jsx";
+import PageNotFound from './PageNotFound/PageNotFound.js';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="LogIn" element={<Login />} /> 
         <Route path="SignUp" element={<SignUp />} />
+        <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </BrowserRouter>
   );
