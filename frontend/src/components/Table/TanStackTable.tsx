@@ -142,75 +142,75 @@ const TanStackTable = ({ data }) => {
         cell: (info) => <span>{info.getValue()}</span>,
         header: "Clicks",
       }),
-      columnHelper.accessor("isActive", {
-        cell: (info) => {
-          const isActive = info.getValue();
-          const rowId = info.row.id;
-          const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+      // columnHelper.accessor("isActive", {
+      //   cell: (info) => {
+      //     const isActive = info.getValue();
+      //     const rowId = info.row.id;
+      //     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
-          const toggleDropdown = () => {
-            setIsDropdownOpen(!isDropdownOpen);
-          };
+      //     const toggleDropdown = () => {
+      //       setIsDropdownOpen(!isDropdownOpen);
+      //     };
   
-          const handleStatusChange = (status) => {
-            // Handle status change logic here
-            console.log(`Changing status of ${rowId} to ${status}`);
-            setIsDropdownOpen(false); // Close the dropdown after changing the status
-          };
+      //     const handleStatusChange = (status) => {
+      //       // Handle status change logic here
+      //       console.log(`Changing status of ${rowId} to ${status}`);
+      //       setIsDropdownOpen(false); // Close the dropdown after changing the status
+      //     };
   
-          const handleDelete = () => {
-            // Handle delete logic here
-            console.log(`Deleting ${rowId}`);
-            setIsDropdownOpen(false); // Close the dropdown after deleting
-          };
+      //     const handleDelete = () => {
+      //       // Handle delete logic here
+      //       console.log(`Deleting ${rowId}`);
+      //       setIsDropdownOpen(false); // Close the dropdown after deleting
+      //     };
   
-          return (
-            <div className="relative">
-              <button
-                className={isActive ? "text-green-600" : "text-red-600"}
-                id={`dropdown-${rowId}`}
-                onClick={toggleDropdown}
-              >
-                {isActive ? "Active" : "Inactive"}
-              </button>
-              {isDropdownOpen && (
-                <div
-                  id={`dropdown-menu-${rowId}`}
-                  className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
-                >
-                  <ul className="py-1 text-sm text-gray-700">
-                    <li>
-                      <button
-                        onClick={() => handleStatusChange(true)}
-                        className="block py-2 px-4 hover:bg-gray-100 w-full"
-                      >
-                        Active
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        onClick={() => handleStatusChange(false)}
-                        className="block py-2 px-4 hover:bg-gray-100 w-full"
-                      >
-                        Not Active
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        onClick={handleDelete}
-                        className="block py-2 px-4 hover:bg-gray-100 w-full"
-                      >
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          );
-        },
-        header: "Status",
-      }),
+      //     return (
+      //       <div className="relative">
+      //         <button
+      //           className={isActive ? "text-green-600" : "text-red-600"}
+      //           id={`dropdown-${rowId}`}
+      //           onClick={toggleDropdown}
+      //         >
+      //           {isActive ? "Active" : "Inactive"}
+      //         </button>
+      //         {isDropdownOpen && (
+      //           <div
+      //             id={`dropdown-menu-${rowId}`}
+      //             className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
+      //           >
+      //             <ul className="py-1 text-sm text-gray-700">
+      //               <li>
+      //                 <button
+      //                   onClick={() => handleStatusChange(true)}
+      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
+      //                 >
+      //                   Active
+      //                 </button>
+      //               </li>
+      //               <li>
+      //                 <button
+      //                   onClick={() => handleStatusChange(false)}
+      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
+      //                 >
+      //                   Not Active
+      //                 </button>
+      //               </li>
+      //               <li>
+      //                 <button
+      //                   onClick={handleDelete}
+      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
+      //                 >
+      //                   Delete
+      //                 </button>
+      //               </li>
+      //             </ul>
+      //           </div>
+      //         )}
+      //       </div>
+      //     );
+      //   },
+      //   header: "Status",
+      // }),
     ];
   }
   else{
@@ -271,6 +271,8 @@ const TanStackTable = ({ data }) => {
                     </button>
                   </li>
                 </ul>
+                </div>
+            )}
           </>
         ),
         header: "Short Link",
