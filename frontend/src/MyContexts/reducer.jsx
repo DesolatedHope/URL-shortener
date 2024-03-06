@@ -26,6 +26,12 @@ const reducer = (state,action) => {
                 token:null,
                 premium:false
             }
+        case 'SET_PREMIUM':
+            sessionStorage.setItem('premium',action.premium);
+            return {
+                ...state,
+                premium:action.premium
+            }
         default:
             return state;
     }

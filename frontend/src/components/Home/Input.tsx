@@ -35,6 +35,10 @@ const Input = () => {
       } catch (error) {
         console.log('Error',error);
         if (error.response.data.msg==="Token has expired") {
+          dispatch({
+            type: "SET_TOKEN",
+            token: null,
+          });
           navigate("/LogIn");
         }
       }
