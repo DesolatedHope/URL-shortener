@@ -13,15 +13,6 @@ const Input = () => {
   const [longURL, setLongURL] = useState("");
   const [shortURL, setShortURL] = useState("");
 
-  const [modalState, setModalState] = useState(false);
-
-  const handleCloseModal = () => {
-    setModalState(false);
-  }
-
-  const handleOpenModal = () => {
-    setModalState(true);
-  }
 
   const handleSubmit = (e) => {
     if (token === null || token === "null" || token === undefined) {
@@ -51,7 +42,7 @@ const Input = () => {
     };
 
     getShortURL();
-    // if(shortURL != null && shortURL != "") handleOpenModal();
+    
   };
 
    
@@ -73,7 +64,7 @@ const Input = () => {
           Shorten Now!
         </button>
       </form>
-      <ShortLinkModal show={modalState} onClose={handleCloseModal} link={shortURL} />
+      
     </>
   );
   
