@@ -31,10 +31,12 @@ const Input = () => {
           }
         }
         )
-
-        // setShortURL(response.data.shortURL);
+        setShortURL(response.data.shortURL);
       } catch (error) {
         console.log('Error',error);
+        if (error.response.data.msg==="Token has expired") {
+          navigate("/LogIn");
+        }
       }
       
     };
