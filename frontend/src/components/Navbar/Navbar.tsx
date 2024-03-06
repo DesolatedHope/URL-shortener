@@ -1,9 +1,19 @@
 import React from "react";
 import logo from "../../assets/Logo.svg";
+import { useStateValue } from "../../MyContexts/StateProvider.jsx";
 
 const Navbar = () => {
-  const auth = true;
-  if (auth) {
+
+  const [{ token }, dispatch] = useStateValue();
+  
+  const handleClick = () => {
+    dispatch({
+      type: "SET_TOKEN",
+      token: null,
+    });
+  }
+
+  if (token) {
     return (
       <div className="sticky top-0 z-50 p-4 flex items-center justify-between bg-elite-black">
         {/* Logo on the left side */}
@@ -16,8 +26,8 @@ const Navbar = () => {
 
         {/* Buttons on the right side */}
         <div className="flex items-center">
-          <button className="bg-bright-blue h-[50px] w-[120px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-2">
-            Welcome
+          <button onClick={()=>handleClick()} className="bg-bright-blue h-[50px] w-[120px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-2">
+            Signout
           </button>
           <button className="bg-bright-pink text-white p-2 rounded-full">
             <svg

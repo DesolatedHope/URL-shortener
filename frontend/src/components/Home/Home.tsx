@@ -6,10 +6,12 @@ import Pricing from "../Pricing/Pricing";
 import { Navbar, WelcomePage } from "../index";
 import { TanStackTable } from '../index';
 import Input from './Input.tsx'
+import { useStateValue} from '../../MyContexts/StateProvider.jsx';
+
 const Home = () => {
 
-  const auth = true;
-  if (auth) {
+  const [{token},dispatch]=useStateValue();
+  if (token!=null && token!="null") {
     return (
       <>
         <Navbar />
