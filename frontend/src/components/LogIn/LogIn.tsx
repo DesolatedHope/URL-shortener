@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../../assets/Logo.svg';
 import { useState } from 'react'
 import instance from '../../axios';
