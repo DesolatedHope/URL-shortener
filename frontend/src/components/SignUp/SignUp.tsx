@@ -45,7 +45,7 @@ export default () => {
       };
       signup();
     } else if (email.length) {
-      setErrorMsg("Enter +password");
+      setErrorMsg("Enter password");
     } else {
       setErrorMsg("Enter valid email");
     }

@@ -4,6 +4,7 @@ import instance from "../../axios.js";
 import { useStateValue } from "../../MyContexts/StateProvider.jsx";
 import UrlModal from "../UrlModal/UrlModal.js";
 import React from "react";
+import ShortLinkModal from "../ShortLinkModal/ShortLinkModal.js";
 
 const Input = () => {
   const navigate = useNavigate();
@@ -13,10 +14,12 @@ const Input = () => {
   const [longURL, setLongURL] = useState("");
   const [shortURL, setShortURL] = useState("");
   const [showModal, setShowModal] = useState(false);
+
   const handleSubmit = (e) => {
     if (token === null || token === "null" || token === undefined) {
       navigate("/LogIn");
     }
+    if(longURL === "") return;
     e.preventDefault();
     if(longURL === "") return;
     console.log(longURL);
@@ -31,18 +34,30 @@ const Input = () => {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
           }
+
         });
     
         setShortURL(response.data.shortURL);
         setShowModal(true); // Show the modal after getting the shortened link
       } catch (error) {
         console.log('Error', error);
+
+        if (error.response.data.msg==="Token has expired") {
+          dispatch({
+            type: "SET_TOKEN",
+            token: null,
+          });
+          navigate("/LogIn");
+        }
       }
     };
+
     getShortURL();
+    
   };
 
    
+
       return (
       <>
         <form className="justify-center items-center gap-x-3 sm:flex">
@@ -68,6 +83,7 @@ const Input = () => {
           }} />}
       </>
     );
+
   
 };
 
