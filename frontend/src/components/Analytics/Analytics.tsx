@@ -1,21 +1,44 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { useState, useEffect } from 'react';
+import { useStateValue } from '../../MyContexts/StateProvider';
+import instance from '../../axios';
 
-const data = [
-  { name: 'Day 1', urls: 100 },
-  { name: 'Day 2', urls: 120 },
-  { name: 'Day 3', urls: 90 },
-  { name: 'Day 4', urls: 150 },
-  { name: 'Day 5', urls: 130 },
-  { name: 'Day 6', urls: 110 },
-  { name: 'Day 7', urls: 140 },
-  { name: 'Day 8', urls: 160 },
-  { name: 'Day 9', urls: 180 },
-  { name: 'Day 10', urls: 170 },
-  { name: 'Day 11', urls: 190 },
-  { name: 'Day 12', urls: 200 },
-];
+// const data = [
+//   { name: 'Day 1', urls: 100 },
+//   { name: 'Day 2', urls: 120 },
+//   { name: 'Day 3', urls: 90 },
+//   { name: 'Day 4', urls: 150 },
+//   { name: 'Day 5', urls: 130 },
+//   { name: 'Day 6', urls: 110 },
+//   { name: 'Day 7', urls: 140 },
+//   { name: 'Day 8', urls: 160 },
+//   { name: 'Day 9', urls: 180 },
+//   { name: 'Day 10', urls: 170 },
+//   { name: 'Day 11', urls: 190 },
+//   { name: 'Day 12', urls: 200 },
+// ];
+
+const [data,setData]=useState([]);
+const [{token},dispatch]=useStateValue();
+
+useEffect(()=>{
+  const getData=async()=>{
+    try{
+      const response=await instance.get('/api/getAnalytics',{
+        headers:{
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      setData(response.data.analytics);
+    }catch(error){
+      console.error("Error fetching analytics data:",error);
+    }
+  }
+  getData();
+},[token])
 
 const Analytics = () => {
   return (
