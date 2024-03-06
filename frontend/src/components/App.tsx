@@ -10,6 +10,7 @@ import Login from "./LogIn/LogIn";
 import { useStateValue } from "../MyContexts/StateProvider.jsx";
 import PageNotFound from './PageNotFound/PageNotFound.js';
 import jwt_decode from "jsonwebtoken/decode";
+import Analytics from './Analytics/Analytics';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="LogIn" element={<Login />} /> 
         <Route path="SignUp" element={<SignUp />} />
         <Route path="*" element={<PageNotFound/>} />
+        <Route path="analytics" element={<Analytics/>} />
       </Routes>
     </BrowserRouter>
   );

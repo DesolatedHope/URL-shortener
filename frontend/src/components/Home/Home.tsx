@@ -52,6 +52,7 @@ useEffect(()=>{
       </>
     );
   }
+  
 };
 
 export default Home;
