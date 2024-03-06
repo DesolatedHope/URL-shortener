@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useStateValue } from '../../MyContexts/StateProvider';
 
 export default () => {
-
+    const [errorMsg, setErrorMsg] = useState(''); // [1]
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,7 +16,7 @@ export default () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        setErrorMsg("");
         try {
             const response = await instance.post('/api/createToken', {
                 email: email,
@@ -34,12 +34,13 @@ export default () => {
             });
             navigate('/');
         } catch (error) {
-            console.error("Error logging in:", error);
+            console.log("error",error.response.data.error);
+            setErrorMsg(error.response.data.error);
         }
     };
 
     return (
-        <main className="w-full h-screen flex flex-col items-center justify-center px-4 bg-elite-black">
+        <main className="w-full h-screen flex flex-col items-center justify-center px-4 bg-dark-gray">
             <div className="max-w-sm w-full text-whitespace-y-5">
                 <div className="text-center pb-8">
                     <img src={logo} className="mx-auto h-[150px] w-[2000px]" />
@@ -58,7 +59,7 @@ export default () => {
                         <input
                             type="email"
                             required
-                            className="w-full mt-2 px-3 py-2 text-white bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className="caret-indigo-600 w-full mt-2 px-3 py-2 text-white bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -70,10 +71,13 @@ export default () => {
                         <input
                             type="password"
                             required
-                            className="w-full mt-2 px-3 py-2 text-white bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className="caret-indigo-600 w-full mt-2 px-3 py-2 text-white bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
+                    </div>
+                    <div className="text-red-500">
+                        {errorMsg}
                     </div>
                     <button
                         className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"

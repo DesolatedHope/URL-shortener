@@ -12,18 +12,33 @@ export default () => {
 
     const [{},dispatch]=useStateValue();
 
+    const [errorMsg,setErrorMsg]=useState('');
+
     const navigate=useNavigate();
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        const signup=async()=>{
-            const response=await instance.post('/api/signup',{
-                email:email,
-                password:password
-            },
-            {
-                headers:{
-                    'Content-Type': 'application/json'
+        setErrorMsg('');
+        if(email.length && password.length){
+            const signup=async()=>{
+                try {
+                    const response=await instance.post('/api/signup',{
+                        email:email,
+                        password:password
+                    },
+                    {
+                        headers:{
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    dispatch({
+                    type:'SET_TOKEN',
+                        token:response.data.access_token
+                    })
+                    navigate('/');
+                } catch (error) {
+                    console.log("error",error.response.data.error);   
+                    setErrorMsg(error.response.data.error);
                 }
             })
             dispatch({
@@ -31,9 +46,15 @@ export default () => {
                 token:response.data.access_token,
                 premium:response.data.premium
             })
+            }
+            signup();
         }
-        signup();
-        navigate('/');
+        else if(email.length){
+            setErrorMsg("Enter +password");
+        }
+        else{
+            setErrorMsg("Enter valid email");
+        }
     }
 
     return (
@@ -138,6 +159,9 @@ export default () => {
                                 value={password}
                                 onChange={(e)=>setPassword(e.target.value)}
                             />
+                        </div>
+                        <div className="text-red-500">
+                            {errorMsg}
                         </div>
                         <button
                             className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
