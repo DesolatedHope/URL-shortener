@@ -109,22 +109,22 @@ const TanStackTable = ({ data }) => {
 
         const handleStatusChange = (status) => {
           // Handle status change logic here
-          console.log(`Changing status of ${rowId} to ${status}`);
+          // console.log(`Changing status of ${rowId} to ${status}`);
         };
 
         const handleDelete = () => {
           // Handle delete logic here
-          console.log(`Deleting ${rowId}`);
+          // console.log(`Deleting ${rowId}`);
         };
 
         return (
           <div className="relative">
             <button
-              className="text-gray-500 hover:text-gray-700"
+              className={isActive ? 'text-green-600' : 'text-red-600' }
               id={`dropdown-${rowId}`}
               data-dropdown-toggle={`dropdown-${rowId}`}
             >
-              {isActive ? "Active" : "Not Active"}
+              {isActive ? "Active" : "Inactive"}
             </button>
             <div
               id={`dropdown-menu-${rowId}`}
