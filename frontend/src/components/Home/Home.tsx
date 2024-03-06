@@ -22,7 +22,7 @@ const Home = () => {
                 }
             })
             try{
-              setTableData(response.data.dataTable);
+              setTableData(response.data.dataTable.reverse());
             }catch(error){
                 console.error("Error fetching table data:",error);
             }

@@ -54,19 +54,20 @@ const Navbar = () => {
 
       {/* Buttons on the right side */}
       <div className="flex items-center">
+
         {token!=null && token!='null' && token !=undefined && token !='undefined' && (!premium || premium==='false') && <button
           onClick={() => handlePremium()}
-          className="bg-yellow-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
+          className="bg-gradient-to-r from-fuchsia-600 to-purple-600 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
         >
           Get Premium
         </button>}
         <button
           onClick={() => handleClick()}
-          className="bg-sky-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
+          className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
         >
           Signout
         </button>
-        
+
       </div>
     </div>
   );

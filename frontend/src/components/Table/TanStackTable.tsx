@@ -7,7 +7,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import React from "react";
-// import { USERS } from "../data";
+import instance from "../../axios";
 import { useState, useEffect } from "react";
 import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
@@ -240,6 +240,37 @@ const TanStackTable = ({ data }) => {
             >
               {info.getValue()}
             </button>
+            {isDropdownOpen && (
+              <div
+                id={`dropdown-menu-${rowId}`}
+                className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
+              >
+                <ul className="py-1 text-sm text-gray-700">
+                  <li>
+                    <button
+                      onClick={() => handleStatusChange(true)}
+                      className="block py-2 px-4 hover:bg-green-300 w-full"
+                    >
+                      Active
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleStatusChange(false)}
+                      className="block py-2 px-4 hover:bg-yellow-500 w-full"
+                    >
+                      Not Active
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleDelete}
+                      className="block py-2 px-4 hover:bg-red-500 w-full"
+                    >
+                      Delete
+                    </button>
+                  </li>
+                </ul>
           </>
         ),
         header: "Short Link",
