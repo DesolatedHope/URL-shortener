@@ -9,7 +9,6 @@ import Login from "./LogIn/LogIn";
 // import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { useStateValue } from "../MyContexts/StateProvider.jsx";
 import PageNotFound from './PageNotFound/PageNotFound.js';
-import jwt_decode from "jsonwebtoken/decode";
 import Analytics from './Analytics/Analytics';
 
 function App() {
