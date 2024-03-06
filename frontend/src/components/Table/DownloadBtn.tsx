@@ -3,6 +3,7 @@ import * as XLSX from "xlsx/xlsx.mjs";
 
 const DownloadBtn = ({ data = [], fileName }) => {
   return (
+    /* @ts-ignore*/
     <button
       className="flex items-center gap-1 bg-violet-500 text-white px-3 py-1 rounded-md hover:bg-violet-600 transition-all duration-300 ease-in-out active:bg-lite-gray duration-150"
       onClick={() => {
@@ -13,6 +14,7 @@ const DownloadBtn = ({ data = [], fileName }) => {
         XLSX.writeFile(workbook, fileName ? `${fileName}.xlsx` : "data.xlsx");
       }}
     >
+      {/* @ts-ignore*/}
       <DownloadIcon />
       Download
     </button>

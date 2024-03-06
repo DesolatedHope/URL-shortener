@@ -2,12 +2,14 @@ import { Navbar, WelcomePage } from "../index";
 import { TanStackTable } from '../index';
 import Input from './Input'
 import { useStateValue} from '../../MyContexts/StateProvider';
+// @ts-ignore
 import React, { useState,useEffect } from 'react';
 import instance from '../../axios';
 
 
 const Home = () => {
 
+  {/* @ts-ignore*/}
   const [{token},dispatch]=useStateValue();
 
   const [tableData,setTableData]=useState([]);

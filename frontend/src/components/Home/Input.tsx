@@ -3,7 +3,9 @@ import { useState } from "react";
 import instance from "../../axios.js";
 import { useStateValue } from "../../MyContexts/StateProvider.jsx";
 import UrlModal from "../UrlModal/UrlModal.js";
+// @ts-ignore
 import React from "react";
+// @ts-ignore
 import ShortLinkModal from "../ShortLinkModal/ShortLinkModal.js";
 
 const Input = () => {

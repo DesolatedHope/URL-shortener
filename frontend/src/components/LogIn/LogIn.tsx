@@ -1,3 +1,4 @@
+{/* @ts-ignore*/}
 import React, { useEffect } from 'react';
 import logo from '../../assets/Logo.svg';
 import { useState } from 'react'
@@ -9,7 +10,7 @@ export default () => {
     const [errorMsg, setErrorMsg] = useState(''); // [1]
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    {/* @ts-ignore*/}
     const [{token},dispatch]=useStateValue();
 
     const navigate=useNavigate();

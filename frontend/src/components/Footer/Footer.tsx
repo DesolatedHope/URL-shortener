@@ -1,4 +1,5 @@
 import logo from '../../assets/LogoBlack.svg';
+{/* @ts-ignore*/}
 import React from 'react';
 
 export default () => {

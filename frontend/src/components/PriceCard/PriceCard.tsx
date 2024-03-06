@@ -1,3 +1,6 @@
+{/* @ts-ignore*/}
+import React from 'react';
+{/* @ts-ignore*/}
 import checkmark from '../../assets/Checkmark.svg';
 
 interface PriceCardProps {

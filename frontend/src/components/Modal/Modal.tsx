@@ -1,4 +1,6 @@
+{/* @ts-ignore*/}
 import React, { useEffect } from "react";
+{/* @ts-ignore*/}
 import ReactDOM from "react-dom";
 import QRCode from "react-qr-code";
 

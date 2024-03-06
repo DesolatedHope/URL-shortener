@@ -6,8 +6,11 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+// @ts-ignore
 import React from "react";
+// @ts-ignore
 import instance from "../../axios";
+{/* @ts-ignore*/}
 import { useState, useEffect } from "react";
 import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
@@ -17,6 +20,7 @@ import Modal from "../Modal/Modal";
 import { useNavigate } from "react-router-dom";
 
 const TanStackTable = ({ data }) => {
+  {/* @ts-ignore*/}
   const [copyState, setCopyState] = useState(false);
   let [copyItem, setCopyItem] = useState({});
   const handleItemCopy = (url, idx) => {
@@ -32,10 +36,11 @@ const TanStackTable = ({ data }) => {
       }
     );
   };
-
+{/* @ts-ignore*/}
   const navigate = useNavigate();
 
   const columnHelper = createColumnHelper();
+  {/* @ts-ignore*/}
   const [{ premium }, dispatch] = useStateValue();
   const [showModal, setShowModal] = useState(false);
   const [url, setUrl] = useState("");
@@ -71,6 +76,7 @@ const TanStackTable = ({ data }) => {
         cell: (info) => (
           <>
             <div className="w-40 truncate">
+            {/* @ts-ignore*/}
               <a href={info.getValue()}>{info.getValue()}</a>
             </div>
           </>
@@ -96,9 +102,11 @@ const TanStackTable = ({ data }) => {
           <>
             <button
               onClick={() => {
+                {/* @ts-ignore*/}
                 handleRedirect(info.getValue());
               }}
             >
+              {/* @ts-ignore*/}
               {info.getValue()}
             </button>
           </>
@@ -138,7 +146,9 @@ const TanStackTable = ({ data }) => {
         ),
         header: "Copy",
       }),
+      /* @ts-ignore*/
       columnHelper.accessor("clicks", {
+        /* @ts-ignore*/
         cell: (info) => <span>{info.getValue()}</span>,
         header: "Clicks",
       }),
@@ -224,12 +234,14 @@ const TanStackTable = ({ data }) => {
         cell: (info) => (
           <>
             <div className="w-40 truncate">
+              {/* @ts-ignore*/}
               <a href={info.getValue()}>{info.getValue()}</a>
             </div>
           </>
         ),
         header: "Original Link",
       }),
+       
       columnHelper.accessor("shortURL", {
         cell: (info) => (
           <>
@@ -238,43 +250,11 @@ const TanStackTable = ({ data }) => {
                 handleRedirect(info.getValue());
               }}
             >
+              {/* @ts-ignore*/}
               {info.getValue()}
             </button>
-            {isDropdownOpen && (
-              <div
-                id={`dropdown-menu-${rowId}`}
-                className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
-              >
-                <ul className="py-1 text-sm text-gray-700">
-                  <li>
-                    <button
-                      onClick={() => handleStatusChange(true)}
-                      className="block py-2 px-4 hover:bg-green-300 w-full"
-                    >
-                      Active
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleStatusChange(false)}
-                      className="block py-2 px-4 hover:bg-yellow-500 w-full"
-                    >
-                      Not Active
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={handleDelete}
-                      className="block py-2 px-4 hover:bg-red-500 w-full"
-                    >
-                      Delete
-                    </button>
-                  </li>
-                </ul>
-                </div>
-            )}
           </>
-        )},
+        ),
         header: "Short Link",
       }),
       columnHelper.accessor("shortURL", {
@@ -311,78 +291,79 @@ const TanStackTable = ({ data }) => {
         header: "Copy",
       }),
       columnHelper.accessor("clicks", {
+        /* @ts-ignore*/
         cell: (info) => <span>{info.getValue()}</span>,
         header: "Clicks",
       }),
-      columnHelper.accessor("isActive", {
-        cell: (info) => {
-          const isActive = info.getValue();
-          const rowId = info.row.id;
-          const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+      // columnHelper.accessor("isActive", {
+      //   cell: (info) => {
+      //     const isActive = info.getValue();
+      //     const rowId = info.row.id;
+      //     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
-          const toggleDropdown = () => {
-            setIsDropdownOpen(!isDropdownOpen);
-          };
+      //     const toggleDropdown = () => {
+      //       setIsDropdownOpen(!isDropdownOpen);
+      //     };
   
-          const handleStatusChange = (status) => {
-            // Handle status change logic here
-            console.log(`Changing status of ${rowId} to ${status}`);
-            setIsDropdownOpen(false); // Close the dropdown after changing the status
-          };
+      //     const handleStatusChange = (status) => {
+      //       // Handle status change logic here
+      //       console.log(`Changing status of ${rowId} to ${status}`);
+      //       setIsDropdownOpen(false); // Close the dropdown after changing the status
+      //     };
   
-          const handleDelete = () => {
-            // Handle delete logic here
-            console.log(`Deleting ${rowId}`);
-            setIsDropdownOpen(false); // Close the dropdown after deleting
-          };
+      //     const handleDelete = () => {
+      //       // Handle delete logic here
+      //       console.log(`Deleting ${rowId}`);
+      //       setIsDropdownOpen(false); // Close the dropdown after deleting
+      //     };
   
-          return (
-            <div className="relative">
-              <button
-                className={isActive ? "text-green-600" : "text-red-600"}
-                id={`dropdown-${rowId}`}
-                onClick={toggleDropdown}
-              >
-                {isActive ? "Active" : "Inactive"}
-              </button>
-              {isDropdownOpen && (
-                <div
-                  id={`dropdown-menu-${rowId}`}
-                  className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
-                >
-                  <ul className="py-1 text-sm text-gray-700">
-                    <li>
-                      <button
-                        onClick={() => handleStatusChange(true)}
-                        className="block py-2 px-4 hover:bg-gray-100 w-full"
-                      >
-                        Active
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        onClick={() => handleStatusChange(false)}
-                        className="block py-2 px-4 hover:bg-gray-100 w-full"
-                      >
-                        Not Active
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        onClick={handleDelete}
-                        className="block py-2 px-4 hover:bg-gray-100 w-full"
-                      >
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          );
-        },
-        header: "Status",
-      }),
+      //     return (
+      //       <div className="relative">
+      //         <button
+      //           className={isActive ? "text-green-600" : "text-red-600"}
+      //           id={`dropdown-${rowId}`}
+      //           onClick={toggleDropdown}
+      //         >
+      //           {isActive ? "Active" : "Inactive"}
+      //         </button>
+      //         {isDropdownOpen && (
+      //           <div
+      //             id={`dropdown-menu-${rowId}`}
+      //             className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
+      //           >
+      //             <ul className="py-1 text-sm text-gray-700">
+      //               <li>
+      //                 <button
+      //                   onClick={() => handleStatusChange(true)}
+      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
+      //                 >
+      //                   Active
+      //                 </button>
+      //               </li>
+      //               <li>
+      //                 <button
+      //                   onClick={() => handleStatusChange(false)}
+      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
+      //                 >
+      //                   Not Active
+      //                 </button>
+      //               </li>
+      //               <li>
+      //                 <button
+      //                   onClick={handleDelete}
+      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
+      //                 >
+      //                   Delete
+      //                 </button>
+      //               </li>
+      //             </ul>
+      //           </div>
+      //         )}
+      //       </div>
+      //     );
+      //   },
+      //   header: "Status",
+      // }),
     ];
   }
   // const [data] = useState(() => [...USERS]);

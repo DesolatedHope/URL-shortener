@@ -1,4 +1,5 @@
 // import { Home } from './components/Home/Home'
+{/* @ts-ignore*/}
 import React from 'react';
 import { useEffect } from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";

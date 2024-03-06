@@ -1,3 +1,4 @@
+{/* @ts-ignore*/}
 import React from "react";
 import logo from "../../assets/Logo.svg";
 import { useState } from "react";

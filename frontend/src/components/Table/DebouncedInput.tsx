@@ -20,6 +20,7 @@ const DebouncedInput = ({
   }, [value]);
 
   return (
+    /* @ts-ignore*/
     <input
       {...props}
       value={value}

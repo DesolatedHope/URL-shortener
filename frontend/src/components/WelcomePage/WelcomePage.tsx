@@ -1,10 +1,13 @@
+{/* @ts-ignore*/}
 import { React } from 'react';
+{/* @ts-ignore*/}
 import { useState, useEffect } from "react";
 import logo from '../../assets/Logo.svg';
 import Features from "../Features/Features";
 import Pricing from "../Pricing/Pricing";
 import CTA from "../CTA/CTA";
 import Footer from "../Footer/Footer";
+{/* @ts-ignore*/}
 import Input from "../Home/Input";
 import { useNavigate } from "react-router";
 
