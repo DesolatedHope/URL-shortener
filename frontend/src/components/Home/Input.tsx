@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import instance from "../../axios.js";
 import { useStateValue } from "../../MyContexts/StateProvider.jsx";
+import UrlModal from "../UrlModal/UrlModal.js";
 import React from "react";
 
 const Input = () => {
@@ -11,32 +12,32 @@ const Input = () => {
 
   const [longURL, setLongURL] = useState("");
   const [shortURL, setShortURL] = useState("");
-
-  const [modalState, setModalState] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const handleSubmit = (e) => {
     if (token === null || token === "null" || token === undefined) {
       navigate("/LogIn");
     }
     e.preventDefault();
+    if(longURL === "") return;
     console.log(longURL);
+
+
     const getShortURL = async () => {
       try {
         const response = await instance.post('/api/getShortURL', {
           longURL: longURL
-        },
-        {
-          headers:{
+        }, {
+          headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
           }
-        }
-        )
-
-        // setShortURL(response.data.shortURL);
+        });
+    
+        setShortURL(response.data.shortURL);
+        setShowModal(true); // Show the modal after getting the shortened link
       } catch (error) {
-        console.log('Error',error);
+        console.log('Error', error);
       }
-      
     };
     getShortURL();
   };
@@ -51,6 +52,7 @@ const Input = () => {
             type="text"
             placeholder="Enter your link here"
             value={longURL}
+            required
             onChange={(e) => setLongURL(e.target.value)}
           />
           <button
@@ -60,7 +62,10 @@ const Input = () => {
             Shorten Now!
           </button>
         </form>
-        
+        {showModal && <UrlModal shortURL={shortURL} onClose={() => {
+          setShowModal(false);
+          window.location.reload();
+          }} />}
       </>
     );
   

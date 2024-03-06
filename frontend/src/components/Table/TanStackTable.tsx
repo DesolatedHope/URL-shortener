@@ -7,7 +7,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import React from "react";
-// import { USERS } from "../data";
+import instance from "../../axios";
 import { useState, useEffect } from "react";
 import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
@@ -179,7 +179,7 @@ const TanStackTable = ({ data }) => {
                   <li>
                     <button
                       onClick={() => handleStatusChange(true)}
-                      className="block py-2 px-4 hover:bg-gray-100 w-full"
+                      className="block py-2 px-4 hover:bg-green-300 w-full"
                     >
                       Active
                     </button>
@@ -187,7 +187,7 @@ const TanStackTable = ({ data }) => {
                   <li>
                     <button
                       onClick={() => handleStatusChange(false)}
-                      className="block py-2 px-4 hover:bg-gray-100 w-full"
+                      className="block py-2 px-4 hover:bg-yellow-500 w-full"
                     >
                       Not Active
                     </button>
@@ -195,7 +195,7 @@ const TanStackTable = ({ data }) => {
                   <li>
                     <button
                       onClick={handleDelete}
-                      className="block py-2 px-4 hover:bg-gray-100 w-full"
+                      className="block py-2 px-4 hover:bg-red-500 w-full"
                     >
                       Delete
                     </button>

@@ -42,6 +42,8 @@ const Modal = ({ show, onClose, value }) => {
           <div className="flex justify-center">
             <QRCode value={value} />
           </div>
+          <br></br>
+            <div> {value} </div>
         </div>
       </div>
       <div className="fixed inset-0 bg-black bg-opacity-0 backdrop-blur-sm"></div>
