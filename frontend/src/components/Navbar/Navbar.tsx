@@ -23,7 +23,13 @@ const Navbar = () => {
       <div className="flex items-center">
         <button
           onClick={() => handleClick()}
-          className="bg-sky-500 h-[50px] w-[120px] hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
+          className="bg-yellow-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
+        >
+          Get Premium
+        </button>
+        <button
+          onClick={() => handleClick()}
+          className="bg-sky-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
         >
           Signout
         </button>
@@ -46,7 +52,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-  
 };
 
 export default Navbar;

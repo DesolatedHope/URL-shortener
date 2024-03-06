@@ -44,7 +44,7 @@ const Modal = ({ show, onClose, value }) => {
           </div>
         </div>
       </div>
-      <div className="fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm"></div>
+      <div className="fixed inset-0 bg-black bg-opacity-0 backdrop-blur-sm"></div>
     </>,
     document.body
   );
