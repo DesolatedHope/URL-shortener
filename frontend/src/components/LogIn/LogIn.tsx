@@ -15,6 +15,10 @@ export default () => {
     const navigate=useNavigate();
 
     const handleSubmit = async (e) => {
+        if(email==""){
+            setErrorMsg("Email is required");
+            return;
+        }
         e.preventDefault();
         setErrorMsg("");
         try {

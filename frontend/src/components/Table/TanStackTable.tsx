@@ -46,7 +46,7 @@ const TanStackTable = ({ data }) => {
       window.open(link,'_blank');
     }
     else{
-      link='https://'+link;
+      link='http://'+link;
       window.open(link,'_blank');
     }
   }

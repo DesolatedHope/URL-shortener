@@ -40,12 +40,6 @@ export default () => {
                     console.log("error",error.response.data.error);   
                     setErrorMsg(error.response.data.error);
                 }
-            })
-            dispatch({
-                type:'SET_TOKEN',
-                token:response.data.access_token,
-                premium:response.data.premium
-            })
             }
             signup();
         }

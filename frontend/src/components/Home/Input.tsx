@@ -3,6 +3,7 @@ import { useState } from "react";
 import instance from "../../axios.js";
 import { useStateValue } from "../../MyContexts/StateProvider.jsx";
 import React from "react";
+import ShortLinkModal from "../ShortLinkModal/ShortLinkModal.js";
 
 const Input = () => {
   const navigate = useNavigate();
@@ -13,10 +14,20 @@ const Input = () => {
   const [shortURL, setShortURL] = useState("");
 
   const [modalState, setModalState] = useState(false);
+
+  const handleCloseModal = () => {
+    setModalState(false);
+  }
+
+  const handleOpenModal = () => {
+    setModalState(true);
+  }
+
   const handleSubmit = (e) => {
     if (token === null || token === "null" || token === undefined) {
       navigate("/LogIn");
     }
+    if(longURL === "") return;
     e.preventDefault();
     console.log(longURL);
     const getShortURL = async () => {
@@ -31,38 +42,40 @@ const Input = () => {
           }
         }
         )
-
-        // setShortURL(response.data.shortURL);
+        setShortURL(response.data.shortURL);
+        
       } catch (error) {
         console.log('Error',error);
       }
       
     };
+
     getShortURL();
+    // if(shortURL != null && shortURL != "") handleOpenModal();
   };
 
    
-      return (
-      <>
-        <form className="justify-center items-center gap-x-3 sm:flex">
-          <input
-            className="shadow border-[4px] border-gray-700 rounded-full py-4 px-3 text-lite-gray bg-dark-gray focus:shadow-outline w-[600px]"
-            id="username"
-            type="text"
-            placeholder="Enter your link here"
-            value={longURL}
-            onChange={(e) => setLongURL(e.target.value)}
-          />
-          <button
-            onClick={(e) => handleSubmit(e)}
-            className="bg-sky-500 h-[50px] w-[150px] hover:bg-elite-black text-white font-bold py-2 px-4 rounded-full -ml-[168px] active:bg-sky-600 duration-150"
-          >
-            Shorten Now!
-          </button>
-        </form>
-        
-      </>
-    );
+    return (
+    <>
+      <form className="justify-center items-center gap-x-3 sm:flex">
+        <input
+          className="shadow border-[4px] border-gray-700 rounded-full py-4 px-3 text-lite-gray bg-dark-gray focus:shadow-outline w-[600px]"
+          id="username"
+          type="text"
+          placeholder="Enter your link here"
+          value={longURL}
+          onChange={(e) => setLongURL(e.target.value)}
+        />
+        <button
+          onClick={(e) => handleSubmit(e)}
+          className="bg-sky-500 h-[50px] w-[150px] hover:bg-elite-black text-white font-bold py-2 px-4 rounded-full -ml-[168px] active:bg-sky-600 duration-150"
+        >
+          Shorten Now!
+        </button>
+      </form>
+      <ShortLinkModal show={modalState} onClose={handleCloseModal} link={shortURL} />
+    </>
+  );
   
 };
 
