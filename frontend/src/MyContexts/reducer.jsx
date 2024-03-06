@@ -1,5 +1,5 @@
 export const initialState={
-    token:null
+    token:null,
 }
 
 const reducer = (state,action) => {
@@ -7,17 +7,17 @@ const reducer = (state,action) => {
         case 'INITIALIZE_TOKEN':
             const tokenFromStorage=sessionStorage.getItem('token');
             return {
-                token:tokenFromStorage
+                token:tokenFromStorage,
             }
         case 'SET_TOKEN':
             sessionStorage.setItem('token',action.token);
             return {
-                token:action.token
+                token:action.token,
             }
         case 'REMOVE_TOKEN':
             sessionStorage.removeItem('token');
             return {
-                token:null
+                token:null,
             }
         default:
             return state;

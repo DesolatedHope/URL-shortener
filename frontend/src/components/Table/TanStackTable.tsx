@@ -11,70 +11,135 @@ import { useState } from "react";
 import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
 import { SearchIcon } from "../Icons/Icons";
+import React from "react";
+import { useStateValue } from "../../MyContexts/StateProvider";
 
-const TanStackTable = () => {
+const TanStackTable = ({ data }) => {
   const columnHelper = createColumnHelper();
 
+  const [{ tableData }, dispatch] = useStateValue();
+
+  const handleClick = (link) => {
+
+  } 
+  
   const columns = [
     columnHelper.accessor("", {
       id: "S.No",
       cell: (info) => <span>{info.row.index + 1}</span>,
       header: "S.No",
     }),
-    columnHelper.accessor("profile", {
+    columnHelper.accessor("longURL", {
       cell: (info) => (
         <>
-          <div className="w-40 truncate"><a href={info.getValue()}>{info.getValue()}</a></div>
+          <div className="w-40 truncate">
+            <a href={info.getValue()}>{info.getValue()}</a>
+          </div>
         </>
       ),
       header: "Original Link",
     }),
-    columnHelper.accessor("profile", {
-      cell: () => (
+    columnHelper.accessor("shortURL", {
+      cell: (info) => (
         <>
           <img
             src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
             alt="..."
             className="w-10 h-10 object-cover justify-self-center"
+            onClick={
+                () => {handleClick(info.getValue())}
+            }
           />
         </>
       ),
       header: "QR Code",
     }),
-    columnHelper.accessor("profile", {
-      cell: () => (
+    columnHelper.accessor("shortURL", {
+      cell: (info) => (
         <>
-          <div className="w-40 truncate"><a href="https://loremflick.com">https://loremflick.com</a></div>
+          <div className="w-40 truncate">{info.getValue()}</div>
         </>
       ),
       header: "Short Link",
     }),
-    columnHelper.accessor("age", {
+    columnHelper.accessor("clicks", {
       cell: (info) => <span>{info.getValue()}</span>,
       header: "Clicks",
     }),
-    columnHelper.accessor("profile", {
-      cell: (info) => (
-        <>
-          <img
-            src={info.getValue()}
-            alt="..."
-            className="rounded-full w-10 h-10 object-cover"
-          />
-        </>
-      ),
-      header: "Author",
-    }),
-    columnHelper.accessor("date", {
-      cell: (info) => <span >25-12-2021</span>,
-      header: "Date Created",
-    }),
-    columnHelper.accessor("progress", {
-      cell: () => <span className="text-green-500">Active</span>,
+    // columnHelper.accessor("email", {
+    //   cell: (info) => (
+    //     <>
+    //       <img
+    //         src={info.getValue()}
+    //         alt="..."
+    //         className="rounded-full w-10 h-10 object-cover"
+    //       />
+    //     </>
+    //   ),
+    //   header: "Author",
+    // }),
+    columnHelper.accessor("isActive", {
+      cell: (info) => {
+        const isActive = info.getValue();
+        const rowId = info.row.original._id; // Assuming you have an _id field
+
+        const handleStatusChange = (status) => {
+          // Handle status change logic here
+          console.log(`Changing status of ${rowId} to ${status}`);
+        };
+
+        const handleDelete = () => {
+          // Handle delete logic here
+          console.log(`Deleting ${rowId}`);
+        };
+
+        return (
+          <div className="relative">
+            <button
+              className="text-gray-500 hover:text-gray-700"
+              id={`dropdown-${rowId}`}
+              data-dropdown-toggle={`dropdown-${rowId}`}
+            >
+              {isActive ? "Active" : "Not Active"}
+            </button>
+            <div
+              id={`dropdown-menu-${rowId}`}
+              className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
+            >
+              <ul className="py-1 text-sm text-gray-700">
+                <li>
+                  <button
+                    onClick={() => handleStatusChange(true)}
+                    className="block py-2 px-4 hover:bg-gray-100 w-full"
+                  >
+                    Active
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleStatusChange(false)}
+                    className="block py-2 px-4 hover:bg-gray-100 w-full"
+                  >
+                    Not Active
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleDelete}
+                    className="block py-2 px-4 hover:bg-gray-100 w-full"
+                  >
+                    Delete
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        );
+      },
       header: "Status",
     }),
   ];
-  const [data] = useState(() => [...USERS]);
+  // const [data] = useState(() => [...USERS]);
   const [globalFilter, setGlobalFilter] = useState("");
 
   const table = useReactTable({
@@ -142,7 +207,7 @@ const TanStackTable = () => {
           )}
         </tbody>
       </table>
-      
+
       <div className="flex items-center justify-end mt-2 gap-2">
         <button
           onClick={() => {
@@ -190,7 +255,11 @@ const TanStackTable = () => {
           className="p-2 bg-gray-400 text-elite-black"
         >
           {[10, 20, 30, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize} className="text-elite-black">
+            <option
+              key={pageSize}
+              value={pageSize}
+              className="text-elite-black"
+            >
               Show {pageSize}
             </option>
           ))}
