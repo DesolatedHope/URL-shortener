@@ -8,10 +8,10 @@ export default () => {
             name: "Basic",
             price: 0,
             features: [
-                "Curabitur faucibus",
-                "massa ut pretium maximus",
-                "Sed posuere nisi",
-                "Pellentesque eu nibh et neque",
+                "Unlimited URL shortening",
+                "Basic analytics (clicks, referrers)",
+                "Ad-supported",
+                "Increased link security",
                 "Suspendisse a leo",
                 "Praesent quis venenatis ipsum",
                 "Duis non diam vel tortor",
@@ -22,26 +22,26 @@ export default () => {
             name: "Professional",
             price: 15,
             features: [
-                "Curabitur faucibus",
-                "massa ut pretium maximus",
-                "Sed posuere nisi",
-                "Pellentesque eu nibh et neque",
-                "Suspendisse a leo",
-                "Praesent quis venenatis ipsum",
-                "Duis non diam vel tortor",
+                "Unlimited URL shortening",
+                "Advanced analytics (clicks, referrers)",
+                "QR code generation",
+                "Link customization",
+                "Increased link security",
+                "Priority support",
+                "Ad-free experience",
             ],
         },
         {
             name: "Enterprise",
             price: 40,
             features: [
-                "Curabitur faucibus",
-                "massa ut pretium maximus",
-                "Sed posuere nisi",
-                "Pellentesque eu nibh et neque",
-                "Suspendisse a leo",
-                "Praesent quis venenatis ipsum",
-                "Duis non diam vel tortor",
+                "Unlimited URL shortening",
+                "Comprehensive real-time analytics",
+                "QR code generation",
+                "Fully customizable branded links",
+                "Enhanced link security and encryption",
+                "Priority 24/7 support",
+                "API access for integration",
             ],
         },
     ];
@@ -55,7 +55,7 @@ export default () => {
                     </h3>
                     <div className='mt-3 max-w-xl'>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur consequat nunc.
+                        Unleash the Power of Short Links: Shrink URLs, Maximize Engagement!
                         </p>
                     </div>
                 </div>
