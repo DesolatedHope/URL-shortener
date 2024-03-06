@@ -3,7 +3,7 @@ import logo from "../../assets/Logo.svg";
 import { useStateValue } from "../../MyContexts/StateProvider";
 
 const Navbar = () => {
-  // const [{ token }, dispatch] = useStateValue();
+  const [{ token }, dispatch] = useStateValue();
 
   const handleClick = () => {
     dispatch({

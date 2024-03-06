@@ -6,22 +6,34 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import React from "react";
 import { USERS } from "../data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
 import { SearchIcon } from "../Icons/Icons";
-import React from "react";
 import { useStateValue } from "../../MyContexts/StateProvider";
 
 const TanStackTable = ({ data }) => {
+  const [copyState, setCopyState] = useState(false);
+  let [copyItem, setCopyItem] = useState({});
+  const handleItemCopy = (url, idx) => {
+    navigator.clipboard.writeText(url).then(
+      function(){
+        setCopyItem({...copyItem, [idx]: true});
+        setTimeout(() => {
+          setCopyItem({...copyItem, [idx]: false});
+        }, 3000);
+      },
+      function(err){
+        console.error("Async: Could not copy text: ", err);
+      }
+    );
+  }
+  
   const columnHelper = createColumnHelper();
-
+  
   const [{ tableData }, dispatch] = useStateValue();
-
-  const handleClick = (link) => {
-
-  } 
   
   const columns = [
     columnHelper.accessor("", {
@@ -56,11 +68,42 @@ const TanStackTable = ({ data }) => {
     }),
     columnHelper.accessor("shortURL", {
       cell: (info) => (
-        <>
-          <div className="w-40 truncate">{info.getValue()}</div>
-        </>
+        <div className="w-40 truncate">{info.getValue()}</div>
       ),
       header: "Short Link",
+    }),
+    columnHelper.accessor("shortURL", {
+      cell: (info) => (
+        <button
+                className={`relative text-gray-500 ${
+                  copyItem[info.row.id] ? "text-indigo-600 pointer-events-none" : ""
+                }`}
+                onClick={handleItemCopy.bind(this, info.getValue(), info.row.index)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 pointer-events-none"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+                {copyItem[info.row.id] ? (
+                  <div className="absolute -top-12 -left-3 px-2 py-1.5 rounded-xl bg-indigo-600 font-semibold text-white text-[10px] after:absolute after:inset-x-0 after:mx-auto after:top-[22px] after:w-2 after:h-2 after:bg-indigo-600 after:rotate-45">
+                    Copied
+                  </div>
+                ) : (
+                  ""
+                )}
+              </button>
+      ),
+      header: "Copy",
     }),
     columnHelper.accessor("clicks", {
       cell: (info) => <span>{info.getValue()}</span>,

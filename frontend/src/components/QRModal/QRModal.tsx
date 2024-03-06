@@ -1,3 +1,4 @@
+import React from 'react';
 import * as Dialog from "@radix-ui/react-dialog";
 
 export default () => {
@@ -11,9 +12,7 @@ export default () => {
         <Dialog.Content className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-lg mx-auto px-4">
           <div className="bg-white rounded-md shadow-lg">
             <div className="flex items-center justify-between p-4 border-b">
-              <Dialog.Title className="text-lg font-medium text-gray-800 ">
-                Terms and agreements
-              </Dialog.Title>
+              
               <Dialog.Close className="p-2 text-gray-400 rounded-md hover:bg-gray-100">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -29,21 +28,7 @@ export default () => {
                 </svg>
               </Dialog.Close>
             </div>
-            <Dialog.Description className="space-y-2 p-4 mt-3 text-[15.5px] leading-relaxed text-gray-500">
-              <p>
-                Commodo eget a et dignissim dignissim morbi vitae, mi. Mi
-                aliquam sit ultrices enim cursus. Leo sapien, pretium duis est
-                eu volutpat interdum eu non. Odio eget nullam elit laoreet.
-                Libero at felis nam at orci venenatis rutrum nunc. Etiam mattis
-                ornare pellentesque iaculis enim.
-              </p>
-              <p>
-                Felis eu non in aliquam egestas placerat. Eget maecenas ornare
-                venenatis lacus nunc, sit arcu. Nam pharetra faucibus eget
-                facilisis pulvinar eu sapien turpis at. Nec aliquam aliquam
-                blandit eu ipsum.
-              </p>
-            </Dialog.Description>
+            
             <div className="flex items-center gap-3 p-4 border-t">
               <Dialog.Close asChild>
                 <button className="px-6 py-2 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 ">
