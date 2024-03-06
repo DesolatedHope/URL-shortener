@@ -272,7 +272,7 @@ const TanStackTable = ({ data }) => {
                   </li>
                 </ul>
           </>
-        ),
+        )},
         header: "Short Link",
       }),
       columnHelper.accessor("shortURL", {
