@@ -37,6 +37,7 @@ export default () => {
           dispatch({
             type: "SET_TOKEN",
             token: response.data.access_token,
+            premium: false,
           });
           navigate("/");
         } catch (error) {
