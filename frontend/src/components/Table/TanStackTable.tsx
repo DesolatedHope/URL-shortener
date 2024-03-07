@@ -158,10 +158,30 @@ const TanStackTable = ({ data }) => {
             setIsDropdownOpen(!isDropdownOpen);
           };
   
-          const handleStatusChange = (status) => {
+          const handleStatusChange = () => {
             // Handle status change logic here
-            console.log(`Activating ${rowId}`);
-            console.log(`Changing status of ${rowId} to ${status}`);
+            const changeStatus = async () => {
+              try {
+                const response = await instance.post(
+                  "/api/alterStatus",
+                  {
+                    shortURL: info.row.getValue("shortURL"),
+                    status: status,
+                  },
+                  {
+                    headers: {
+                      Authorization: `Bearer ${token}`,
+                      "Content-Type": "application/json",
+                    },
+                  }
+                );
+                console.log(response);
+                window.location.reload();
+              } catch (error) {
+                console.error("Error changing status:", error);
+              }
+            }
+            changeStatus();
             setIsDropdownOpen(false); // Close the dropdown after changing the status
           };
 
@@ -207,20 +227,13 @@ const TanStackTable = ({ data }) => {
                   <ul className="py-1 text-sm text-gray-700">
                     <li>
                       <button
-                        onClick={() => handleStatusChange(true)}
-                        className="block py-2 px-4 hover:bg-gray-100 text-green-500 w-full"
+                        onClick={() => handleStatusChange()}
+                        className={isActive ? "block py-2 px-4 hover:bg-gray-100 text-red-500 w-full":"block py-2 px-4 hover:bg-gray-100 text-green-500 w-full"}
                       >
-                        {isActive ? "Active" : "Activate"}
+                        Switch Status
                       </button>
                     </li>
-                    {/* <li>
-                      <button
-                        onClick={() => handleStatusChange(false)}
-                        className="block py-2 px-4 hover:bg-gray-100 text-dark-gray w-full"
-                      >
-                        {isActive ? "Deactivate" : "Inactive"}
-                      </button>
-                    </li> */}
+                    
                     <li>
                       <button
                         onClick={handleDelete}
