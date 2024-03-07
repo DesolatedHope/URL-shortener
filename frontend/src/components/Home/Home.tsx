@@ -33,10 +33,6 @@ const Home = () => {
     }
 },[token])
 
-useEffect(()=>{
-  console.log("tableData",tableData);
-},[tableData])
-
 
   if (token!=null && token!="null" && token!=undefined && token!='undefined') {
     return (

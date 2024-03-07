@@ -24,7 +24,7 @@ const Input = () => {
     if(longURL === "") return;
     e.preventDefault();
     if(longURL === "") return;
-    console.log(longURL);
+    // console.log(longURL);
 
 
     const getShortURL = async () => {
