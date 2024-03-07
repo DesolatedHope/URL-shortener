@@ -1,5 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 { /* @ts-ignore*/ }
-import { React } from 'react';
 { /* @ts-ignore*/ }
 import { useState } from "react";
 import logo from '../../assets/Logo.svg';
@@ -16,43 +16,8 @@ export default () => {
         { title: "Features", path: "/#Features" },
         { title: "Pricing", path: "/#Pricing" }
     ];
-    const Brand = () => (React.createElement("div", { className: "flex items-center justify-between py-5 md:block" },
-        React.createElement("a", { href: "javascript:void(0)" },
-            React.createElement("img", { src: logo, className: "pt-[10px] h-[100px] w-[150px]", alt: "Shorty-URL logo" })),
-        React.createElement("div", { className: "md:hidden" },
-            React.createElement("button", { className: "menu-btn text-gray-400 hover:text-gray-300", onClick: () => setState(!state) }, state ? (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", viewBox: "0 0 20 20", fill: "currentColor" },
-                React.createElement("path", { fillRule: "evenodd", d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", clipRule: "evenodd" }))) : (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", className: "w-6 h-6" },
-                React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" })))))));
-    return (React.createElement("div", { className: "scroll-smooth" },
-        React.createElement("div", { className: "bg-elite-black h-screen" },
-            React.createElement("header", null,
-                React.createElement("div", { className: `md:hidden ${state ? "mx-2 pb-5" : "hidden"}` },
-                    React.createElement(Brand, null)),
-                React.createElement("nav", { className: `pb-5 md:text-sm ${state ? "absolute z-20 top-0 inset-x-0 bg-gray-800 rounded-xl mx-2 mt-2 md:mx-0 md:mt-0 md:relative md:bg-transparent" : ""}` },
-                    React.createElement("div", { className: "gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8" },
-                        React.createElement(Brand, null),
-                        React.createElement("div", { className: `flex-1 items-center mt-8 md:mt-0 md:flex ${state ? 'block' : 'hidden'} ` },
-                            React.createElement("ul", { className: "flex-1 justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0" },
-                                navigation.map((item, idx) => {
-                                    return (React.createElement("li", { key: idx, className: "text-gray-300 hover:text-gray-400" },
-                                        React.createElement("a", { href: item.path, className: "block" }, item.title)));
-                                }),
-                                React.createElement("li", { className: "mt-4 lg:mt-0" },
-                                    React.createElement("a", { href: "/SignUp", className: "flex items-center py-3 px-4 text-center border text-white hover:text-sky-600 rounded-md block lg:inline lg:border-0" }, "Sign Up")),
-                                React.createElement("li", null,
-                                    React.createElement("a", { href: "/LogIn", className: "flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-sky-500 hover:bg-sky-400 active:bg-sky-600 duration-150 rounded-full md:inline-flex" }, "Log In"))))))),
-            React.createElement("section", { className: "relative" },
-                React.createElement("div", { className: "relative z-10 max-w-screen-xl mx-auto px-4 py-28 md:px-8" },
-                    React.createElement("div", { className: "space-y-5 max-w-4xl mx-auto text-center" },
-                        React.createElement("h2", { className: "text-4xl text-white font-extrabold mx-auto md:text-5xl" }, "Shorten Your Loooong Links :)"),
-                        React.createElement("p", { className: "max-w-2xl mx-auto text-gray-400" }, "An efficient and easy-to-use URL Shortening service that streamlines your online experience."),
-                        React.createElement("div", { className: "py-28" },
-                            React.createElement("form", { className: "justify-center items-center gap-x-3 sm:flex" },
-                                React.createElement("input", { className: "shadow border-[4px] border-gray-700 rounded-full py-4 px-3 text-lite-gray bg-dark-gray focus:shadow-outline w-[600px]", id: "username", type: "text", placeholder: "Enter your link here" }),
-                                React.createElement("button", { onClick: () => (navigate('/LogIn')), className: "bg-sky-500 h-[50px] w-[150px] hover:bg-sky-400 text-white font-bold py-2 px-4 rounded-full -ml-[168px] active:bg-sky-600 duration-150" }, "Shorten Now!"))))),
-                React.createElement("div", { className: "absolute inset-0 m-auto max-w-xs h-[357px] blur-[118px] sm:max-w-md md:max-w-lg", style: { background: "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11) 15.73%, rgba(14, 165, 233, 0.41) 15.74%, rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4) 115.91%)" } }))),
-        React.createElement(Features, null),
-        React.createElement(Pricing, null),
-        React.createElement(CTA, null),
-        React.createElement(Footer, null)));
+    const Brand = () => (_jsxs("div", { className: "flex items-center justify-between py-5 md:block", children: [_jsx("a", { href: "javascript:void(0)", children: _jsx("img", { src: logo, className: "pt-[10px] h-[100px] w-[150px]", alt: "Shorty-URL logo" }) }), _jsx("div", { className: "md:hidden", children: _jsx("button", { className: "menu-btn text-gray-400 hover:text-gray-300", onClick: () => setState(!state), children: state ? (_jsx("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", viewBox: "0 0 20 20", fill: "currentColor", children: _jsx("path", { fillRule: "evenodd", d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", clipRule: "evenodd" }) })) : (_jsx("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", className: "w-6 h-6", children: _jsx("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" }) })) }) })] }));
+    return (_jsxs("div", { className: "scroll-smooth", children: [_jsxs("div", { className: "bg-elite-black h-screen", children: [_jsxs("header", { children: [_jsx("div", { className: `md:hidden ${state ? "mx-2 pb-5" : "hidden"}`, children: _jsx(Brand, {}) }), _jsx("nav", { className: `pb-5 md:text-sm ${state ? "absolute z-20 top-0 inset-x-0 bg-gray-800 rounded-xl mx-2 mt-2 md:mx-0 md:mt-0 md:relative md:bg-transparent" : ""}`, children: _jsxs("div", { className: "gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8", children: [_jsx(Brand, {}), _jsx("div", { className: `flex-1 items-center mt-8 md:mt-0 md:flex ${state ? 'block' : 'hidden'} `, children: _jsxs("ul", { className: "flex-1 justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0", children: [navigation.map((item, idx) => {
+                                                        return (_jsx("li", { className: "text-gray-300 hover:text-gray-400", children: _jsx("a", { href: item.path, className: "block", children: item.title }) }, idx));
+                                                    }), _jsx("li", { className: "mt-4 lg:mt-0", children: _jsx("button", { onClick: () => { navigate('/SignUp'); }, className: "flex items-center py-3 px-4 text-center border text-white hover:text-sky-600 rounded-md block lg:inline lg:border-0", children: "Sign Up" }) }), _jsx("li", { children: _jsx("button", { onClick: () => { navigate('/LogIn'); }, className: "flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-sky-500 hover:bg-sky-400 active:bg-sky-600 duration-150 rounded-full md:inline-flex", children: "Log In" }) })] }) })] }) })] }), _jsxs("section", { className: "relative", children: [_jsx("div", { className: "relative z-10 max-w-screen-xl mx-auto px-4 py-28 md:px-8", children: _jsxs("div", { className: "space-y-5 max-w-4xl mx-auto text-center", children: [_jsx("h2", { className: "text-4xl text-white font-extrabold mx-auto md:text-5xl", children: "Shorten Your Loooong Links :)" }), _jsx("p", { className: "max-w-2xl mx-auto text-gray-400", children: "An efficient and easy-to-use URL Shortening service that streamlines your online experience." }), _jsx("div", { className: "py-28", children: _jsxs("form", { className: "justify-center items-center gap-x-3 sm:flex", children: [_jsx("input", { className: "shadow border-[4px] border-gray-700 rounded-full py-4 px-3 text-lite-gray bg-dark-gray focus:shadow-outline w-[600px]", id: "username", type: "text", placeholder: "Enter your link here" }), _jsx("button", { onClick: () => (navigate('/LogIn')), className: "bg-sky-500 h-[50px] w-[150px] hover:bg-sky-400 text-white font-bold py-2 px-4 rounded-full -ml-[168px] active:bg-sky-600 duration-150", children: "Shorten Now!" })] }) })] }) }), _jsx("div", { className: "absolute inset-0 m-auto max-w-xs h-[357px] blur-[118px] sm:max-w-md md:max-w-lg", style: { background: "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11) 15.73%, rgba(14, 165, 233, 0.41) 15.74%, rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4) 115.91%)" } })] })] }), _jsx(Features, {}), _jsx(Pricing, {}), _jsx(CTA, {}), _jsx(Footer, {})] }));
 };

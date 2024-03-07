@@ -28,8 +28,8 @@ function App() {
         <Route index element={<Home />} />
         <Route path="LogIn" element={<Login />} /> 
         <Route path="SignUp" element={<SignUp />} />
-        <Route path="*" element={<PageNotFound/>} />
         <Route path="analytics" element={<Analytics/>} />
+        <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </BrowserRouter>
   );

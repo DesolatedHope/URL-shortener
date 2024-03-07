@@ -1,6 +1,5 @@
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable, } from "@tanstack/react-table";
-// @ts-ignore
-import React from "react";
 { /* @ts-ignore*/ }
 import { useState } from "react";
 import DownloadBtn from "./DownloadBtn";
@@ -51,40 +50,32 @@ const TanStackTable = ({ data }) => {
         columns = [
             columnHelper.accessor("", {
                 id: "S.No",
-                cell: (info) => React.createElement("span", null, info.row.index + 1),
+                cell: (info) => _jsx("span", { children: info.row.index + 1 }),
                 header: "S.No",
             }),
             columnHelper.accessor("longURL", {
-                cell: (info) => (React.createElement(React.Fragment, null,
-                    React.createElement("div", { className: "w-40 truncate" },
-                        React.createElement("a", { href: info.getValue() }, info.getValue())))),
+                cell: (info) => (_jsx(_Fragment, { children: _jsx("div", { className: "w-40 truncate", children: _jsx("a", { href: info.getValue(), children: info.getValue() }) }) })),
                 header: "Original Link",
             }),
             columnHelper.accessor("shortURL", {
-                cell: (info) => (React.createElement(React.Fragment, null,
-                    React.createElement("img", { src: "https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg", alt: "...", className: "w-10 h-10 object-cover justify-self-center hover:cursor-pointer", onClick: () => handleOpenModal(info.getValue()) }),
-                    React.createElement(Modal, { show: showModal, onClose: handleCloseModal, value: url }))),
+                cell: (info) => (_jsxs(_Fragment, { children: [_jsx("img", { src: "https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg", alt: "...", className: "w-10 h-10 object-cover justify-self-center hover:cursor-pointer", onClick: () => handleOpenModal(info.getValue()) }), _jsx(Modal, { show: showModal, onClose: handleCloseModal, value: url })] })),
                 header: "QR Code",
             }),
             columnHelper.accessor("shortURL", {
-                cell: (info) => (React.createElement(React.Fragment, null,
-                    React.createElement("button", { onClick: () => {
+                cell: (info) => (_jsx(_Fragment, { children: _jsx("button", { onClick: () => {
                             { /* @ts-ignore*/ }
                             handleRedirect(info.getValue());
-                        } }, info.getValue()))),
+                        }, children: info.getValue() }) })),
                 header: "Short Link",
             }),
             columnHelper.accessor("shortURL", {
-                cell: (info) => (React.createElement("button", { className: `relative text-gray-500 ${copyItem[info.row.id] ? "text-indigo-600 pointer-events-none" : ""}`, onClick: handleItemCopy.bind(this, info.getValue(), info.row.index) },
-                    React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6 pointer-events-none", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 2 },
-                        React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" })),
-                    copyItem[info.row.id] ? (React.createElement("div", { className: "absolute -top-12 -left-3 px-2 py-1.5 rounded-xl bg-indigo-600 font-semibold text-white text-[10px] after:absolute after:inset-x-0 after:mx-auto after:top-[22px] after:w-2 after:h-2 after:bg-indigo-600 after:rotate-45" }, "Copied")) : (""))),
+                cell: (info) => (_jsxs("button", { className: `relative text-gray-500 ${copyItem[info.row.id] ? "text-indigo-600 pointer-events-none" : ""}`, onClick: handleItemCopy.bind(this, info.getValue(), info.row.index), children: [_jsx("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6 pointer-events-none", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 2, children: _jsx("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" }) }), copyItem[info.row.id] ? (_jsx("div", { className: "absolute -top-12 -left-3 px-2 py-1.5 rounded-xl bg-indigo-600 font-semibold text-white text-[10px] after:absolute after:inset-x-0 after:mx-auto after:top-[22px] after:w-2 after:h-2 after:bg-indigo-600 after:rotate-45", children: "Copied" })) : ("")] })),
                 header: "Copy",
             }),
             /* @ts-ignore*/
             columnHelper.accessor("clicks", {
                 /* @ts-ignore*/
-                cell: (info) => React.createElement("span", null, info.getValue()),
+                cell: (info) => _jsx("span", { children: info.getValue() }),
                 header: "Clicks",
             }),
             // columnHelper.accessor("isActive", {
@@ -158,32 +149,26 @@ const TanStackTable = ({ data }) => {
         columns = [
             columnHelper.accessor("", {
                 id: "S.No",
-                cell: (info) => React.createElement("span", null, info.row.index + 1),
+                cell: (info) => _jsx("span", { children: info.row.index + 1 }),
                 header: "S.No",
             }),
             columnHelper.accessor("longURL", {
-                cell: (info) => (React.createElement(React.Fragment, null,
-                    React.createElement("div", { className: "w-40 truncate" },
-                        React.createElement("a", { href: info.getValue() }, info.getValue())))),
+                cell: (info) => (_jsx(_Fragment, { children: _jsx("div", { className: "w-40 truncate", children: _jsx("a", { href: info.getValue(), children: info.getValue() }) }) })),
                 header: "Original Link",
             }),
             columnHelper.accessor("shortURL", {
-                cell: (info) => (React.createElement(React.Fragment, null,
-                    React.createElement("button", { onClick: () => {
+                cell: (info) => (_jsx(_Fragment, { children: _jsx("button", { onClick: () => {
                             handleRedirect(info.getValue());
-                        } }, info.getValue()))),
+                        }, children: info.getValue() }) })),
                 header: "Short Link",
             }),
             columnHelper.accessor("shortURL", {
-                cell: (info) => (React.createElement("button", { className: `relative text-gray-500 ${copyItem[info.row.id] ? "text-indigo-600 pointer-events-none" : ""}`, onClick: handleItemCopy.bind(this, info.getValue(), info.row.index) },
-                    React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6 pointer-events-none", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 2 },
-                        React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" })),
-                    copyItem[info.row.id] ? (React.createElement("div", { className: "absolute -top-12 -left-3 px-2 py-1.5 rounded-xl bg-indigo-600 font-semibold text-white text-[10px] after:absolute after:inset-x-0 after:mx-auto after:top-[22px] after:w-2 after:h-2 after:bg-indigo-600 after:rotate-45" }, "Copied")) : (""))),
+                cell: (info) => (_jsxs("button", { className: `relative text-gray-500 ${copyItem[info.row.id] ? "text-indigo-600 pointer-events-none" : ""}`, onClick: handleItemCopy.bind(this, info.getValue(), info.row.index), children: [_jsx("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6 pointer-events-none", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 2, children: _jsx("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" }) }), copyItem[info.row.id] ? (_jsx("div", { className: "absolute -top-12 -left-3 px-2 py-1.5 rounded-xl bg-indigo-600 font-semibold text-white text-[10px] after:absolute after:inset-x-0 after:mx-auto after:top-[22px] after:w-2 after:h-2 after:bg-indigo-600 after:rotate-45", children: "Copied" })) : ("")] })),
                 header: "Copy",
             }),
             columnHelper.accessor("clicks", {
                 /* @ts-ignore*/
-                cell: (info) => React.createElement("span", null, info.getValue()),
+                cell: (info) => _jsx("span", { children: info.getValue() }),
                 header: "Clicks",
             }),
             // columnHelper.accessor("isActive", {
@@ -265,42 +250,17 @@ const TanStackTable = ({ data }) => {
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
     });
-    return (React.createElement("div", { className: "p-2 max-w-5xl mx-auto text-white fill-gray-400" },
-        React.createElement("div", { className: "flex justify-between mb-2" },
-            React.createElement("div", { className: "w-full flex items-center gap-1" },
-                React.createElement(SearchIcon, null),
-                React.createElement(DebouncedInput, { value: globalFilter ?? "", onChange: (value) => setGlobalFilter(String(value)), className: "p-2 bg-transparent outline-none border-b-2 w-1/5 focus:w-1/3 duration-300 border-indigo-500", placeholder: "Search all columns..." })),
-            React.createElement(DownloadBtn, { data: data, fileName: "peoples" })),
-        React.createElement("table", { className: "border border-gray-700 w-full text-left" },
-            React.createElement("thead", { className: "bg-orange-500" }, table.getHeaderGroups().map((headerGroup) => (React.createElement("tr", { key: headerGroup.id }, headerGroup.headers.map((header) => (React.createElement("th", { key: header.id, className: "capitalize px-3.5 py-2" }, flexRender(header.column.columnDef.header, header.getContext())))))))),
-            React.createElement("tbody", null, table.getRowModel().rows.length ? (table.getRowModel().rows.map((row, i) => (React.createElement("tr", { key: row.id, className: `
+    return (_jsxs("div", { className: "p-2 max-w-5xl mx-auto text-white fill-gray-400", children: [_jsxs("div", { className: "flex justify-between mb-2", children: [_jsxs("div", { className: "w-full flex items-center gap-1", children: [_jsx(SearchIcon, {}), _jsx(DebouncedInput, { value: globalFilter ?? "", onChange: (value) => setGlobalFilter(String(value)), className: "p-2 bg-transparent outline-none border-b-2 w-1/5 focus:w-1/3 duration-300 border-indigo-500", placeholder: "Search all columns..." })] }), _jsx(DownloadBtn, { data: data, fileName: "peoples" })] }), _jsxs("table", { className: "border border-gray-700 w-full text-left", children: [_jsx("thead", { className: "bg-orange-500", children: table.getHeaderGroups().map((headerGroup) => (_jsx("tr", { children: headerGroup.headers.map((header) => (_jsx("th", { className: "capitalize px-3.5 py-2", children: flexRender(header.column.columnDef.header, header.getContext()) }, header.id))) }, headerGroup.id))) }), _jsx("tbody", { children: table.getRowModel().rows.length ? (table.getRowModel().rows.map((row, i) => (_jsx("tr", { className: `
                   ${i % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}
-                  ` }, row.getVisibleCells().map((cell) => (React.createElement("td", { key: cell.id, className: "px-3.5 py-2" }, flexRender(cell.column.columnDef.cell, cell.getContext())))))))) : (React.createElement("tr", { className: "text-center h-32" },
-                React.createElement("td", { colSpan: 12 }, "No Record Found!"))))),
-        React.createElement("div", { className: "flex items-center justify-end mt-2 gap-2" },
-            React.createElement("button", { onClick: () => {
-                    table.previousPage();
-                }, disabled: !table.getCanPreviousPage(), className: "p-1 border border-gray-300 px-2 disabled:opacity-30" }, "<"),
-            React.createElement("button", { onClick: () => {
-                    table.nextPage();
-                }, disabled: !table.getCanNextPage(), className: "p-1 border border-gray-300 px-2 disabled:opacity-30" }, ">"),
-            React.createElement("span", { className: "flex items-center gap-1" },
-                React.createElement("div", null, "Page"),
-                React.createElement("strong", null,
-                    table.getState().pagination.pageIndex + 1,
-                    " of",
-                    " ",
-                    table.getPageCount())),
-            React.createElement("span", { className: "flex items-center gap-1" },
-                "| Go to page:",
-                React.createElement("input", { type: "number", defaultValue: table.getState().pagination.pageIndex + 1, onChange: (e) => {
-                        const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                        table.setPageIndex(page);
-                    }, className: "border p-1 rounded w-16 bg-transparent" })),
-            React.createElement("select", { value: table.getState().pagination.pageSize, onChange: (e) => {
-                    table.setPageSize(Number(e.target.value));
-                }, className: "p-2 bg-gray-400 text-elite-black" }, [10, 20, 30, 50].map((pageSize) => (React.createElement("option", { key: pageSize, value: pageSize, className: "text-elite-black" },
-                "Show ",
-                pageSize)))))));
+                  `, children: row.getVisibleCells().map((cell) => (_jsx("td", { className: "px-3.5 py-2", children: flexRender(cell.column.columnDef.cell, cell.getContext()) }, cell.id))) }, row.id)))) : (_jsx("tr", { className: "text-center h-32", children: _jsx("td", { colSpan: 12, children: "No Record Found!" }) })) })] }), _jsxs("div", { className: "flex items-center justify-end mt-2 gap-2", children: [_jsx("button", { onClick: () => {
+                            table.previousPage();
+                        }, disabled: !table.getCanPreviousPage(), className: "p-1 border border-gray-300 px-2 disabled:opacity-30", children: "<" }), _jsx("button", { onClick: () => {
+                            table.nextPage();
+                        }, disabled: !table.getCanNextPage(), className: "p-1 border border-gray-300 px-2 disabled:opacity-30", children: ">" }), _jsxs("span", { className: "flex items-center gap-1", children: [_jsx("div", { children: "Page" }), _jsxs("strong", { children: [table.getState().pagination.pageIndex + 1, " of", " ", table.getPageCount()] })] }), _jsxs("span", { className: "flex items-center gap-1", children: ["| Go to page:", _jsx("input", { type: "number", defaultValue: table.getState().pagination.pageIndex + 1, onChange: (e) => {
+                                    const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                                    table.setPageIndex(page);
+                                }, className: "border p-1 rounded w-16 bg-transparent" })] }), _jsx("select", { value: table.getState().pagination.pageSize, onChange: (e) => {
+                            table.setPageSize(Number(e.target.value));
+                        }, className: "p-2 bg-gray-400 text-elite-black", children: [10, 20, 30, 50].map((pageSize) => (_jsxs("option", { value: pageSize, className: "text-elite-black", children: ["Show ", pageSize] }, pageSize))) })] })] }));
 };
 export default TanStackTable;

@@ -4,7 +4,7 @@ import logo from "../../assets/Logo.svg";
 import { useStateValue } from "../../MyContexts/StateProvider";
 import instance from "../../axios";
 import { useNavigate } from "react-router-dom";
-const Navbar = () => {
+const Navbar2 = () => {
     const [{ token, premium }, dispatch] = useStateValue();
     const navigate = useNavigate();
     const handleClick = () => {
@@ -47,6 +47,6 @@ const Navbar = () => {
                         token != "null" &&
                         token != undefined &&
                         token != "undefined" &&
-                        (!premium || premium === "false") && (_jsx("button", { onClick: () => handlePremium(), className: "bg-gradient-to-r from-fuchsia-600 to-purple-600 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2", children: "Get Premium" })), _jsx("button", { onClick: () => navigate('/analytics'), className: "bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2", children: "Analytics" }), _jsx("button", { onClick: () => handleClick(), className: "bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2", children: "Signout" })] })] }));
+                        (!premium || premium === "false") && (_jsx("button", { onClick: () => handlePremium(), className: "bg-gradient-to-r from-fuchsia-600 to-purple-600 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2", children: "Get Premium" })), _jsx("button", { onClick: () => navigate('/'), className: "bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2", children: "Dashboard" }), _jsx("button", { onClick: () => handleClick(), className: "bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2", children: "Signout" })] })] }));
 };
-export default Navbar;
+export default Navbar2;

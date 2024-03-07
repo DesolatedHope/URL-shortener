@@ -1,3 +1,4 @@
+import { jsx as _jsx } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 const DebouncedInput = ({ value: initValue, onChange, debounce = 500, ...props }) => {
     const [value, setValue] = useState(initValue);
@@ -13,6 +14,6 @@ const DebouncedInput = ({ value: initValue, onChange, debounce = 500, ...props }
     }, [value]);
     return (
     /* @ts-ignore*/
-    React.createElement("input", { ...props, value: value, onChange: (e) => setValue(e.target.value) }));
+    _jsx("input", { ...props, value: value, onChange: (e) => setValue(e.target.value) }));
 };
 export default DebouncedInput;

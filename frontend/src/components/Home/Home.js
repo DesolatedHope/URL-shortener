@@ -1,9 +1,10 @@
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { Navbar, WelcomePage } from "../index";
 import { TanStackTable } from '../index';
 import Input from './Input';
 import { useStateValue } from '../../MyContexts/StateProvider';
 // @ts-ignore
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import instance from '../../axios';
 const Home = () => {
     { /* @ts-ignore*/ }
@@ -32,15 +33,10 @@ const Home = () => {
         console.log("tableData", tableData);
     }, [tableData]);
     if (token != null && token != "null" && token != undefined && token != 'undefined') {
-        return (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: "pt-4 min-h-screen bg-elite-black" },
-                React.createElement(Navbar, null),
-                React.createElement(Input, null),
-                React.createElement(TanStackTable, { data: tableData }))));
+        return (_jsx(_Fragment, { children: _jsxs("div", { className: "pt-4 min-h-screen bg-elite-black", children: [_jsx(Navbar, {}), _jsx(Input, {}), _jsx(TanStackTable, { data: tableData })] }) }));
     }
     else {
-        return (React.createElement(React.Fragment, null,
-            React.createElement(WelcomePage, null)));
+        return (_jsx(_Fragment, { children: _jsx(WelcomePage, {}) }));
     }
 };
 export default Home;
