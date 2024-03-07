@@ -121,7 +121,7 @@ export default () => {
             </div>
           </div>
 
-          <button className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100">
+          {/* <button className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100">
             <svg
               className="w-5 h-5"
               viewBox="0 0 48 48"
@@ -153,7 +153,7 @@ export default () => {
               </defs>
             </svg>
             Continue with Google
-          </button>
+          </button> */}
 
           <div className="relative">
             <span className="block w-full h-px bg-gray-300"></span>

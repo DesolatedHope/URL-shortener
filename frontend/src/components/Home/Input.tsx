@@ -62,7 +62,7 @@ const Input = () => {
 
       return (
       <>
-        <form className="justify-center items-center gap-x-3 sm:flex">
+        <form className="justify-center items-center align-center center gap-x-3 flex">
           <input
             className="shadow border-[4px] border-gray-700 rounded-full py-4 px-3 text-lite-gray bg-dark-gray focus:shadow-outline w-[600px]"
             id="username"

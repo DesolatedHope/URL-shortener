@@ -15,7 +15,7 @@ import Analytics from './Analytics/Analytics';
 function App() {
 
   const [{token}, dispatch] = useStateValue();
-  
+
   useEffect(()=>{
     dispatch({
       type: "INITIALIZE_TOKEN",
@@ -28,7 +28,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="LogIn" element={<Login />} /> 
         <Route path="SignUp" element={<SignUp />} />
-        <Route path="analytics" element={<Analytics/>} />
+        <Route path="analytics" element={<Analytics />} />
         <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </BrowserRouter>

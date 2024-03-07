@@ -22,6 +22,8 @@ import { useNavigate } from "react-router-dom";
 const TanStackTable = ({ data }) => {
   {/* @ts-ignore*/}
   const [copyState, setCopyState] = useState(false);
+ 
+  const {token} = useStateValue()[0];
   let [copyItem, setCopyItem] = useState({});
   const handleItemCopy = (url, idx) => {
     navigator.clipboard.writeText(url).then(
@@ -65,7 +67,6 @@ const TanStackTable = ({ data }) => {
 
   let columns=[];
 
-  if(!(!premium || premium==='false')){
     columns = [
       columnHelper.accessor("", {
         id: "S.No",
@@ -76,27 +77,22 @@ const TanStackTable = ({ data }) => {
         cell: (info) => (
           <>
             <div className="w-40 truncate">
-            {/* @ts-ignore*/}
-              <a href={info.getValue()}>{info.getValue()}</a>
+              {/* @ts-ignore*/}
+              <button
+                onClick={() => {
+                  {/* @ts-ignore*/}
+                  handleRedirect(info.getValue());
+                }}
+              >
+                {/* @ts-ignore*/}
+                {info.getValue()}
+              </button>
             </div>
           </>
         ),
         header: "Original Link",
       }),
-       columnHelper.accessor("shortURL", {
-        cell: (info) => (
-          <>
-            <img
-              src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
-              alt="..."
-              className="w-10 h-10 object-cover justify-self-center hover:cursor-pointer"
-              onClick={() => handleOpenModal(info.getValue())}
-            />
-            <Modal show={showModal} onClose={handleCloseModal} value={url} />
-          </>
-        ),
-        header: "QR Code",
-      }),
+       
       columnHelper.accessor("shortURL", {
         cell: (info) => (
           <>
@@ -152,220 +148,116 @@ const TanStackTable = ({ data }) => {
         cell: (info) => <span>{info.getValue()}</span>,
         header: "Clicks",
       }),
-      // columnHelper.accessor("isActive", {
-      //   cell: (info) => {
-      //     const isActive = info.getValue();
-      //     const rowId = info.row.id;
-      //     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+      columnHelper.accessor("isActive", {
+        cell: (info) => {
+          const isActive = info.getValue();
+          const rowId = info.row.id;
+          const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
-      //     const toggleDropdown = () => {
-      //       setIsDropdownOpen(!isDropdownOpen);
-      //     };
+          const toggleDropdown = () => {
+            setIsDropdownOpen(!isDropdownOpen);
+          };
   
-      //     const handleStatusChange = (status) => {
-      //       // Handle status change logic here
-      //       console.log(`Changing status of ${rowId} to ${status}`);
-      //       setIsDropdownOpen(false); // Close the dropdown after changing the status
-      //     };
+          const handleStatusChange = (status) => {
+            // Handle status change logic here
+            console.log(`Activating ${rowId}`);
+            console.log(`Changing status of ${rowId} to ${status}`);
+            setIsDropdownOpen(false); // Close the dropdown after changing the status
+          };
+
+          const handleDelete = async () => {
+            // Handle delete logic here
+            console.log(`Deleting ${rowId}`);
+            try{
+              const response = await instance.post(
+                '/api/deleteURL', 
+                {
+                  shortURL: info.row.getValue('shortURL'),
+                },
+                {
+                  headers: {
+                    'Authorization': `Bearer ${token}`, 
+                    'Content-Type': 'application/json',
+                  },
+                }
+                );
+                console.log(response);
+                window.location.reload();
+            }
+            catch(error){
+              console.error("Error deleting URL:", error);
+            }
+            setIsDropdownOpen(false); // Close the dropdown after deleting
+          };
   
-      //     const handleDelete = () => {
-      //       // Handle delete logic here
-      //       console.log(`Deleting ${rowId}`);
-      //       setIsDropdownOpen(false); // Close the dropdown after deleting
-      //     };
-  
-      //     return (
-      //       <div className="relative">
-      //         <button
-      //           className={isActive ? "text-green-600" : "text-red-600"}
-      //           id={`dropdown-${rowId}`}
-      //           onClick={toggleDropdown}
-      //         >
-      //           {isActive ? "Active" : "Inactive"}
-      //         </button>
-      //         {isDropdownOpen && (
-      //           <div
-      //             id={`dropdown-menu-${rowId}`}
-      //             className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
-      //           >
-      //             <ul className="py-1 text-sm text-gray-700">
-      //               <li>
-      //                 <button
-      //                   onClick={() => handleStatusChange(true)}
-      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
-      //                 >
-      //                   Active
-      //                 </button>
-      //               </li>
-      //               <li>
-      //                 <button
-      //                   onClick={() => handleStatusChange(false)}
-      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
-      //                 >
-      //                   Not Active
-      //                 </button>
-      //               </li>
-      //               <li>
-      //                 <button
-      //                   onClick={handleDelete}
-      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
-      //                 >
-      //                   Delete
-      //                 </button>
-      //               </li>
-      //             </ul>
-      //           </div>
-      //         )}
-      //       </div>
-      //     );
-      //   },
-      //   header: "Status",
-      // }),
-    ];
-  }
-  else{
-    columns = [
-      columnHelper.accessor("", {
-        id: "S.No",
-        cell: (info) => <span>{info.row.index + 1}</span>,
-        header: "S.No",
-      }),
-      columnHelper.accessor("longURL", {
-        cell: (info) => (
-          <>
-            <div className="w-40 truncate">
-              {/* @ts-ignore*/}
-              <a href={info.getValue()}>{info.getValue()}</a>
+          return (
+            <div className="relative">
+              <button
+                className={isActive ? "text-green-600" : "text-red-600"}
+                id={`dropdown-${rowId}`}
+                onClick={toggleDropdown}
+              >
+                {isActive ? "Active" : "Inactive"}
+              </button>
+              {isDropdownOpen && (
+                <div
+                  id={`dropdown-menu-${rowId}`}
+                  className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
+                >
+                  <ul className="py-1 text-sm text-gray-700">
+                    <li>
+                      <button
+                        onClick={() => handleStatusChange(true)}
+                        className="block py-2 px-4 hover:bg-gray-100 text-green-500 w-full"
+                      >
+                        {isActive ? "Active" : "Activate"}
+                      </button>
+                    </li>
+                    {/* <li>
+                      <button
+                        onClick={() => handleStatusChange(false)}
+                        className="block py-2 px-4 hover:bg-gray-100 text-dark-gray w-full"
+                      >
+                        {isActive ? "Deactivate" : "Inactive"}
+                      </button>
+                    </li> */}
+                    <li>
+                      <button
+                        onClick={handleDelete}
+                        className="block py-2 px-4 hover:bg-gray-100 text-red-500 w-full"
+                      >
+                        Delete
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
-          </>
-        ),
-        header: "Original Link",
+          );
+        },
+        header: "Status",
       }),
-       
-      columnHelper.accessor("shortURL", {
-        cell: (info) => (
-          <>
-            <button
-              onClick={() => {
-                handleRedirect(info.getValue());
-              }}
-            >
-              {/* @ts-ignore*/}
-              {info.getValue()}
-            </button>
-          </>
-        ),
-        header: "Short Link",
-      }),
-      columnHelper.accessor("shortURL", {
-        cell: (info) => (
-          <button
-            className={`relative text-gray-500 ${
-              copyItem[info.row.id] ? "text-indigo-600 pointer-events-none" : ""
-            }`}
-            onClick={handleItemCopy.bind(this, info.getValue(), info.row.index)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 pointer-events-none"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-              />
-            </svg>
-            {copyItem[info.row.id] ? (
-              <div className="absolute -top-12 -left-3 px-2 py-1.5 rounded-xl bg-indigo-600 font-semibold text-white text-[10px] after:absolute after:inset-x-0 after:mx-auto after:top-[22px] after:w-2 after:h-2 after:bg-indigo-600 after:rotate-45">
-                Copied
-              </div>
-            ) : (
-              ""
-            )}
-          </button>
-        ),
-        header: "Copy",
-      }),
-      columnHelper.accessor("clicks", {
-        /* @ts-ignore*/
-        cell: (info) => <span>{info.getValue()}</span>,
-        header: "Clicks",
-      }),
-      // columnHelper.accessor("isActive", {
-      //   cell: (info) => {
-      //     const isActive = info.getValue();
-      //     const rowId = info.row.id;
-      //     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
-      //     const toggleDropdown = () => {
-      //       setIsDropdownOpen(!isDropdownOpen);
-      //     };
-  
-      //     const handleStatusChange = (status) => {
-      //       // Handle status change logic here
-      //       console.log(`Changing status of ${rowId} to ${status}`);
-      //       setIsDropdownOpen(false); // Close the dropdown after changing the status
-      //     };
-  
-      //     const handleDelete = () => {
-      //       // Handle delete logic here
-      //       console.log(`Deleting ${rowId}`);
-      //       setIsDropdownOpen(false); // Close the dropdown after deleting
-      //     };
-  
-      //     return (
-      //       <div className="relative">
-      //         <button
-      //           className={isActive ? "text-green-600" : "text-red-600"}
-      //           id={`dropdown-${rowId}`}
-      //           onClick={toggleDropdown}
-      //         >
-      //           {isActive ? "Active" : "Inactive"}
-      //         </button>
-      //         {isDropdownOpen && (
-      //           <div
-      //             id={`dropdown-menu-${rowId}`}
-      //             className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
-      //           >
-      //             <ul className="py-1 text-sm text-gray-700">
-      //               <li>
-      //                 <button
-      //                   onClick={() => handleStatusChange(true)}
-      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
-      //                 >
-      //                   Active
-      //                 </button>
-      //               </li>
-      //               <li>
-      //                 <button
-      //                   onClick={() => handleStatusChange(false)}
-      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
-      //                 >
-      //                   Not Active
-      //                 </button>
-      //               </li>
-      //               <li>
-      //                 <button
-      //                   onClick={handleDelete}
-      //                   className="block py-2 px-4 hover:bg-gray-100 w-full"
-      //                 >
-      //                   Delete
-      //                 </button>
-      //               </li>
-      //             </ul>
-      //           </div>
-      //         )}
-      //       </div>
-      //     );
-      //   },
-      //   header: "Status",
-      // }),
     ];
-  }
+
+    if(premium == 'true' || premium == true){
+      columns.push(
+        columnHelper.accessor("shortURL", {
+          cell: (info) => (
+            <>
+              <img
+                src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
+                alt="..."
+                className="w-10 h-10 object-cover justify-self-center hover:cursor-pointer"
+                onClick={() => handleOpenModal(info.getValue())}
+              />
+              <Modal show={showModal} onClose={handleCloseModal} value={url} />
+            </>
+          ),
+          header: "QR Code",
+        }),
+      );
+    }
+  
   // const [data] = useState(() => [...USERS]);
   const [globalFilter, setGlobalFilter] = useState("");
 
