@@ -4,6 +4,8 @@ This application allows users to shorten URLs and track analytics such as the nu
 
 Two types of services are available to users: Normal and Premium. With the Normal service, only the provided website link is shortened. However, by opting for the Premium service, users also receive a QR code for the website in addition to the shortened URL.
 
+Website is deployed  [here](https://shortyaz.vercel.app/)
+
 Backend is deployed  [here](http://shorty.westeurope.cloudapp.azure.com)
 
 
