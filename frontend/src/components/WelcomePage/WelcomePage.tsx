@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 {/* @ts-ignore*/}
 import Input from "../Home/Input";
 import { useNavigate } from "react-router";
-
+import GlobalAnalytics from '../GlobalAnalytics/GlobalAnalytics';
 export default () => {
 
     const navigate = useNavigate();
@@ -54,7 +54,7 @@ export default () => {
 
     return (
       <div className="scroll-smooth">
-        <div className="bg-elite-black h-screen">
+        <div className="bg-elite-black h-full">
             <header>
                 <div className={`md:hidden ${state ? "mx-2 pb-5" : "hidden"}`}>
                     <Brand />
@@ -118,7 +118,7 @@ export default () => {
                 </div>
 
                 <div className="absolute inset-0 m-auto max-w-xs h-[357px] blur-[118px] sm:max-w-md md:max-w-lg" style={{ background: "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11) 15.73%, rgba(14, 165, 233, 0.41) 15.74%, rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4) 115.91%)" }}></div>
-            
+                <GlobalAnalytics />
             </section>
             {/* <Stats /> */}
         </div>

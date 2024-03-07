@@ -23,7 +23,13 @@ const Analytics = () => {
         // console.log(response.data.analytics);
         setData(response.data);
       } catch (error) {
-        console.error("Error fetching analytics data:", error);
+        if(error.response.data.msg==="Token has expired" || error.response.data.msg==="Not enough segments"){
+          dispatch({
+            type: "SET_TOKEN",
+            token: null,
+          });
+          navigate("/LogIn");
+        }
       }
     };
     getData();
