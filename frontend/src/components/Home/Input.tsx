@@ -74,7 +74,7 @@ const Input = () => {
           />
           <button
             onClick={(e) => handleSubmit(e)}
-            className="bg-sky-500 h-[50px] w-[150px] hover:bg-elite-black text-white font-bold py-2 px-4 rounded-full -ml-[168px] active:bg-sky-600 duration-150"
+            className="bg-sky-500 h-[50px] w-[150px] border-2 border-transparent hover:border-golden hover:bg-elite-black text-white font-bold py-2 px-4 rounded-full -ml-[168px] active:bg-sky-600 duration-150"
           >
             Shorten Now!
           </button>

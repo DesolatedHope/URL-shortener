@@ -15,6 +15,7 @@ export default {
         'lite-gray': '#C9CED6',
         'bright-blue': '#144EE3',
         'bright-pink': '#EB568E',
+        'golden': '#ffd700',
       },
     },
   },

@@ -63,20 +63,20 @@ const Navbar2 = () => {
           (!premium || premium === "false") && (
             <button
               onClick={() => handlePremium()}
-              className="bg-gradient-to-r from-fuchsia-600 to-purple-600 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
+              className="bg-gradient-to-r from-fuchsia-600 to-purple-600 h-[50px] w-fit border-2 border-transparent hover:border-golden hover:border-2 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
             >
               Get Premium
             </button>
           )}
         <button
           onClick={() => navigate('/')}
-          className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
+          className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit border-2 border-elite-black hover:border-cyan-200 hover:border-2 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
         >
           Dashboard
         </button>
         <button
           onClick={() => handleClick()}
-          className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit hover:bg-orange-500 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
+          className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 h-[50px] w-fit border-2 border-elite-black hover:border-red-600 hover:border-2 duration-150 active:bg-elite-black duration-150 text-white font-bold py-2 px-4 rounded-full mr-2"
         >
           Signout
         </button>
