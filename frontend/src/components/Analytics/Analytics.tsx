@@ -11,6 +11,7 @@ const Analytics = () => {
   const navigate = useNavigate();
   {/* @ts-ignore*/}
   const [{ token }, dispatch] = useStateValue();
+
   useEffect(() => {
     const getData = async () => {
       try {

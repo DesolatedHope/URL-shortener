@@ -6,28 +6,30 @@ export const initialState={
 const reducer = (state,action) => {
     switch(action.type){
         case 'INITIALIZE_TOKEN':
-            const tokenFromStorage=sessionStorage.getItem('token');
-            const premiumFromStorage=sessionStorage.getItem('premium');
+            const tokenFromStorage=localStorage.getItem('token');
+            const premiumFromStorage=localStorage.getItem('premium');
             return {
                 token:tokenFromStorage,
                 premium:premiumFromStorage
             }
         case 'SET_TOKEN':
-            sessionStorage.setItem('token',action.token);
-            sessionStorage.setItem('premium',action.premium);
+            if(localStorage.getItem('token')==null || localStorage.getItem('token')===undefined || localStorage.getItem('token')==='undefined' || localStorage.getItem('token')==='null'){
+                localStorage.setItem('token',action.token);
+                localStorage.setItem('premium',action.premium);
+            }
             return {
                 token:action.token,
                 premium:action.premium
             }
         case 'REMOVE_TOKEN':
-            sessionStorage.removeItem('token');
-            sessionStorage.removeItem('premium');
+            localStorage.removeItem('token');
+            localStorage.removeItem('premium');
             return {
                 token:null,
                 premium:false
             }
         case 'SET_PREMIUM':
-            sessionStorage.setItem('premium',action.premium);
+            localStorage.setItem('premium',action.premium);
             return {
                 ...state,
                 premium:action.premium
