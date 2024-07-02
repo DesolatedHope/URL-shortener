@@ -47,8 +47,3 @@ To run the application locally, follow these steps:
 3. Copy the shortened URL and share it as needed.
 4. Track analytics for each shortened URL by viewing the dashboard.
 5. Opt for premium service if need a QR code :)
-
-## Work Distribution
-
-- Srinjoy, Himanshu, Shuvraneel - Login + Signup Page
-- Himdyuti, Shashvat, Aditya, Kalidas - Backend + Integration + Deployment
